@@ -1,2 +1,21 @@
-<h1>Festivals#edit</h1>
-<p>Find me in app/views/festivals/edit.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-lg-offset-3">
+        <%= form_for @festival, url: "/festivals/#{@festival.id}" do |f| %>
+        <h1>編集</h1>
+            <table class="table">
+                <tbody>
+                    <tr><th>名前</th><th> <%= f.text_field :name, class: "form-control" %> </th></tr>
+                    <tr><th>値段</th><th> <%= f.text_field :price, class: "form-control" %> </th></tr>
+                    <tr><th>開催日</th><th> <%= f.datetime_select :day, class: "form-control" %> </th></tr>
+                    <tr><th>開催地域</th><th> <%= f.text_field :regions, class: "form-control" %> </th></tr>
+                    <tr><th>ジャンル</th><th><%= f.text_field :genre, class: "form-control" %></th></tr>
+                    <tr><th>コメント</th><th><%= f.text_field :introduction, class: "form-control" %></th></tr>
+                    <tr><th>画像</th><th><%= f.attachment_field :image, class: "form-control" %></th></tr>
+                    <tr><th></th><th><%= f.submit '更新',  class: "btn-flat-border btn-block" %></th></tr>
+                </tbody>
+            </table>
+        <% end %>
+        </div>
+    </div>
+</div>

@@ -1,2 +1,18 @@
-<h1>Festivals#show</h1>
-<p>Find me in app/views/festivals/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 ">
+        <h1>詳細</h1>
+            <table class="table">
+                <tbody>
+                    <tr><th>名前</th><th> <%= @festival.name %></th></tr>
+                    <tr><th>値段</th><th>  <%= @festival.price %> </th></tr>
+                    <tr><th>ジャンル</th><th><%= @festival.genre %></th></tr>
+                    <tr><th>開催日</th><th> <%= @festival.day %></th></tr>
+                    <tr><th>開催地域</th><th><%= @festival.regions %></th></tr>
+                    <tr><th>コメント</th><th> <%= @festival.introduction %></th></tr>
+                    <tr><th>画像</th><th><%= attachment_image_tag @festival, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", size: "100x100" %></th></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
