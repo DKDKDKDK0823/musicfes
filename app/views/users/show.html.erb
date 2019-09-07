@@ -1,0 +1,53 @@
+<div class="contatiner">
+    <div class="row">
+		<div class="col-xs-6 col-lg-offset-3">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>マイページ</th>
+						
+					</tr>
+					<tr>
+						<td>名前</td>
+						<td><%= @user.last_name %> <%= @user.first_name %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>名前(カナ)</td>
+						<td><%= @user.last_name_kana %> <%= @user.first_name_kana %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>メールアドレス</td>
+						<td><%= @user.email %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>住所</td>
+						<td><%= @user.adress %></td>
+						<td></td>
+					</tr>
+                   <tr>
+						<td>ユーザー名</td>
+						<td><%= @user.name %></td>
+						<td></td>
+					</tr>
+                     <tr>
+						<td>自己紹介文</td>
+						<td><%= @user.introduction %></td>
+						<td></td>
+					</tr>
+                    <tr>
+						<td>p路フィール画像</td>
+						<td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", size: "100x100" %></td>
+						<td></td>
+					</tr>
+ 
+                    <tr>
+                        <td><%= link_to "編集", "/users/#{@user.id}/edit", class: "btn-flat-border" %>
+                    </tr>
+				</tbody>
+			</table>
+		</div>
+    </div>
+</div>

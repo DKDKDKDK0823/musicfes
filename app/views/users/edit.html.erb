@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-lg-offset-3">
+        <%= form_for @user, url: "/users/#{@user.id}" do |f| %>
+        <h1>編集だよ〜</h1>
+            <table class="table">
+                <tbody>
+                    <tr><th>(姓)</th><th> <%= f.text_field :last_name, class: "form-control" %> </th></tr>
+                    <tr><th>(名)</th><th> <%= f.text_field :first_name, class: "form-control" %> </th></tr>
+                    <tr><th>カナ(姓)</th><th> <%= f.text_field :last_name_kana, class: "form-control" %> </th></tr>
+                    <tr><th>カナ(名)</th><th> <%= f.text_field :first_name_kana, class: "form-control" %> </th></tr>
+                    <tr><th>住所</th><th><%= f.text_field :adress, class: "form-control" %></th></tr>
+                    <tr><th>メールアドレス</th><th><%= f.text_field :email, class: "form-control" %></th></tr>
+                    <tr><th>ユーザー名</th><th><%= f.text_field :name, class: "form-control" %></th></tr>
+                    <tr><th>自己紹介文</th><th><%= f.text_area :introduction, class: "form-control" %></th></tr>
+                    <tr><th>画像</th><th><%= f.attachment_field :profile_image, class: "form-control" %></th></tr>
+                    <tr><th></th><th><%= f.submit '更新',  class: "btn-flat-border btn-block" %></th></tr>
+                </tbody>
+            </table>
+        <% end %>
+        </div>
+    </div>
+</div>

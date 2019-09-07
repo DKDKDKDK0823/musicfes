@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+    <h1>こんばんわ</h1>
+        <% @festivals.each do |festival| %>
+        <div class="col-lg-12">
+        <table class="table">
+                <tbody>
+                    <tr><th>名前</th><th> <%= link_to festival.name, "/festivals/#{festival.id}" %></th></tr>
+                    <tr><th>値段</th><th>  <%= festival.price %> </th></tr>
+                    <tr><th>ジャンル</th><th><%= festival.genre %></th></tr>
+                    <tr><th>開催日</th><th> <%= festival.day %></th></tr>
+                    <tr><th>開催地域</th><th><%= festival.regions %></th></tr>
+                    <tr><th>コメント</th><th> <%= festival.introduction %></th></tr>
+                    <tr><th>画像</th><th><%= attachment_image_tag festival, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", size: "100x100" %></th></tr>
+                </tbody>
+        </table> 
+        </div>
+        <% end %>
+    </div>
+</div>
