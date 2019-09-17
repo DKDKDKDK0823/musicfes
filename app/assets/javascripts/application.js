@@ -17,9 +17,42 @@
 //= require cocoon
 //= require activestorage
 //= require autocomplete-rails
-//
+//= require uikit.min
+//= require uikit-icons.min
 //= require turbolinks
 //= require_tree .
  //= require bootstrap-sprockets
+
+
+$(function() {
+    $('.home-text').textillate ({
+        loop: true,
+        in: {
+            effect: 'FadeInDown',
+            delay,
+            shuffle: true
+        },
+        out: {
+            effect: 'flash',
+            delay: 50
+        }
+    });
+})
+
+$(function() {
+    $(".btn-gnavi").on("click", function() {
+        var rightVal = 0;
+        
+        if($(this).hasClass("open")) {
+            rightVal = -300;
+            $(this).removeClass("open");
+        } else {
+            $(this).addClass("open");
+        } 
+        $("#global-navi").stop().animate({
+            right: rightVal
+        }, 200);
+    });
+});
 
 

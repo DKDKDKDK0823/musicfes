@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
  
 
+
+
   root 'homes#top'
+  resources :favorite_festivals
+  resources :favorite_artists
+  resources :artists
   resources :festivals
   resources :regions,only: [:index, :destroy]
   devise_for :users, controllers: {

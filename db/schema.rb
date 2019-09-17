@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_113032) do
+ActiveRecord::Schema.define(version: 2019_09_09_070420) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 2019_09_05_113032) do
 
   create_table "comments", force: :cascade do |t|
     t.string "reply"
+    t.integer "user_id"
+    t.integer "festival_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_artists", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_festivals", force: :cascade do |t|
     t.integer "user_id"
     t.integer "festival_id"
     t.datetime "created_at", null: false
@@ -59,6 +73,8 @@ ActiveRecord::Schema.define(version: 2019_09_05_113032) do
     t.string "genre"
     t.date "day"
     t.string "regions"
+    t.integer "user_id"
+    t.integer "fes_artist_id"
   end
 
   create_table "users", force: :cascade do |t|

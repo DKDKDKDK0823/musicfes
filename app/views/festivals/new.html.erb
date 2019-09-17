@@ -1,3 +1,6 @@
+<div id="wrapper">
+    <%= render 'layouts/user-nav' %>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-xs-6 col-lg-offset-3">
@@ -12,7 +15,15 @@
                     <tr><th>開催地域</th><th><%= f.text_field :regions, class: "form-control" %></th></tr>
                     <tr><th>コメント</th><th><%= f.text_area :introduction, class: "form-control" %></th></tr>
                     <tr><th>画像</th><th><%= f.attachment_field :image, class: "form-control" %></th></tr>
-                    <tr><th></th><th><%= f.submit '更新',  class: "btn-flat-border btn-block" %></th></tr>
+                    <tr><th></th><td>
+                    <div class="nested-fields form-inline">
+                    <%# <%= f.fields_for :artists do |a| %> %>
+                        <%# <%= a.collection_select :artist, @artists, :id, :name,{prompt: ""} %> %>
+                    <%# <% end %> %>
+                            <%= link_to "アーティスト登録", "/artists/new" %>
+                    </div></td>
+                    </tr>
+                        <tr><th></th><th><%= f.submit '更新',  class: "btn-flat-border btn-block" %></th></tr>
                 </tbody>
             </table>   
             <% end %>     

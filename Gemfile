@@ -78,4 +78,5 @@ gem 'seed-fu'
 gem 'cocoon'
 gem 'font-awesome-sass'
 gem 'faker'
+gem 'execjs'
 

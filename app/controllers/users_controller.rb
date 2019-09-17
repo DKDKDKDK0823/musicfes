@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @userfestivals = @user.festivals
   end
 
   def edit
