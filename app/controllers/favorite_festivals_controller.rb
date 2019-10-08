@@ -1,22 +1,24 @@
 class FavoriteFestivalsController < ApplicationController
-  def index
-  end
 
-  def favorite
-    favorite = current_user.favorites.new(festival_id: @festival.id)
+  before_action :set_variables
+
+
+  def favorite 
+    favorite = current_user.favorite_festivals.new(festival_id: @festival.id)
     favorite.save
   end
 
   def unfavorite
-    favorite = current_user.favorites.find_by(product_id: @festival.id)
+    favorite = current_user.favorite_festivals.find_by(festival_id: @festival.id)
     favorite.destroy
   end
 
   private
   def set_variables
-    @festival = Festival.find(params[:festival_id])
+    @festival = Festival.find(params[:id])
     @id_name = "#favorite-link-#{@festival.id}"
   end
 
 
 end
+

@@ -19,27 +19,15 @@
 //= require autocomplete-rails
 //= require uikit.min
 //= require uikit-icons.min
+//= require bootstrap-sprockets
 //= require turbolinks
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
- //= require bootstrap-sprockets
+
+ 
 
 
-$(function() {
-    $('.home-text').textillate ({
-        loop: true,
-        in: {
-            effect: 'FadeInDown',
-            delay,
-            shuffle: true
-        },
-        out: {
-            effect: 'flash',
-            delay: 50
-        }
-    });
-})
-
-$(function() {
+$(document).ready(function () {
     $(".btn-gnavi").on("click", function() {
         var rightVal = 0;
         
@@ -53,6 +41,16 @@ $(function() {
             right: rightVal
         }, 200);
     });
+    
 });
 
+$(document).on('turbolinks:load', function(){
+    $('.slider').slick({
+      autoplay:true,  
+      accessibility:true,
+      arrows:true,
+      centerMode:false,
+      swipe:true,	
+    });
+  });
 

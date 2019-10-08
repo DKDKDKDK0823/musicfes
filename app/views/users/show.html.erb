@@ -31,10 +31,14 @@
 				<% @userfestivals.each do |festival| %>
 				<div class="col-lg-2">
 					<div class="row">
-					<%= link_to "/festivals/#{festival.id}" do %>
-						<%= attachment_image_tag festival, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", size: "100x100", class: 'festival-image' %>　<br>
-						<%= festival.name %>
-					<% end %>
+                   	<%= link_to "/festivals/#{festival.id}" do %>
+                        <% if festival.images.attached? %>
+                        <% festival.images.each do |image| %> 
+                            <%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center, border:'2', bordercolor:'#00CCCC'}).processed %>
+                        <% end %> 
+                        <% end %>
+                    <% end %>
+
 					</div>
 				</div>
 				<% end %>

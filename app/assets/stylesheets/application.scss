@@ -11,17 +11,25 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_self
  */
 
 
+@import "slick-theme"; 
+@import "slick";
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 
 @import 'font-awesome-sprockets';
 @import 'font-awesome'; 
 
 @import "uikit.min";
+
+ 
+
 
 html{
   min-height: 100%;
@@ -96,7 +104,7 @@ body {
   position: absolute;
   width: 30px;
   height: 4px;
-  background: #666;
+  background: rgb(202, 187, 187);
   border-radius: 10px;
   -webkit-transition: all 400ms;
   transition: all 400ms
@@ -245,4 +253,12 @@ input, select {
 
 .container {
   margin-top: 100px;
+}
+
+.top-nav {
+  background: rgba(33,33,33,.9);
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
 }

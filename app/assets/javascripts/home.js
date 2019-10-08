@@ -1,15 +1,17 @@
-$(function() {
-    $(".btn-gnavi").on("click", function() {
-        var rightVal = 0;
-        
-        if($(this).hasClass("open")) {
-            rightVal = -300;
-            $(this).removeClass("open");
-        } else {
-            $(this).addClass("open");
-        } 
-        $("#global-navi").stop().animate({
-            right: rightVal
-        }, 200);
+
+
+$(document).ready(function () {
+    $("#theTarget").skippr({
+        transition : 'slide',
+        speed : 1000,
+        easing : 'easeOutQuart',
+        navType : 'block',
+        childrenElementType : 'div',
+        arrows : true,
+        autoPlay : true,
+        autoPlayDuration : 8000,
+        keyboardOnAlways : true,
+        hidePrevious : false
     });
-});
+  });
+

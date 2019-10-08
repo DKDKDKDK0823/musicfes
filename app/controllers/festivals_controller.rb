@@ -1,8 +1,20 @@
 class FestivalsController < ApplicationController
+
   def index
-    @festivals = Festival.all.order(created_at: :desc)
-    @festivals = Festival.page(params[:page]).per(6)
+    @festival = Festival.all.page(params[:page]).per(6)
+    if @searched_festivals
+      @fastivals = @searched_festivals.where(is_deleted: ["false"]).page(params[:page]).reverse_order
+    else
+      @festivals = Festival.where(is_deleted: ["false"]).page(params[:page]).reverse_order
+    end
+    @festival = Festival.all.page(params[:page]).per(6)
   end
+
+  def search
+    @q = Festival.search(search_params)
+    @festivals = @q.result(distinct: true)
+  end
+
 
   def show
     @festival = Festival.find(params[:id])   
@@ -12,7 +24,6 @@ class FestivalsController < ApplicationController
   def new
     @artists = Artist.all
     @festival = Festival.new
-    # @festival.fes_artists.build
   end
 
   def create
@@ -29,6 +40,7 @@ class FestivalsController < ApplicationController
 
   def update
     @festival = Festival.find(params[:id])
+
     if @festival.update(festival_params)
       flash[:success] = "編集完了"
       redirect_to ("/festivals/#{@festival.id}")
@@ -51,7 +63,11 @@ class FestivalsController < ApplicationController
   private
 
   def festival_params
-    params.require(:festival).permit(:name, :price, :image, :genre, :day, :regions, :introduction, artist_attributes:[:id, :artist_id, :_destroy])
+    params.require(:festival).permit(:name, :price, :genre, :day, :regions, :introduction, images: [], artist_attributes:[:id, :artist_id, :_destroy])
+  end
+
+  def search_params
+    params.require(:festival).permit(:name)
   end
 
 

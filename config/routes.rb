@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
 
   root 'homes#top'
-  resources :favorite_festivals
   resources :favorite_artists
   resources :artists
   resources :festivals
+  get '/festivals' =>'festivals#search'
   resources :regions,only: [:index, :destroy]
   devise_for :users, controllers: {
     sessions:      'users/sessions',
@@ -16,6 +16,9 @@ Rails.application.routes.draw do
    }
 
   resources :users
+  get "users/:id/favorite_festtivals" => "users#favorite_festivals"
+  post "/favorite_festivals/:id" => 'favorite_festivals#favorite', as: 'favorite'
+  delete '/favorite_festivals/:id' => 'favorite_festivals#unfavorite', as: 'unfavorite'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -18,11 +18,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorite_festivals
+    @user = User.find_by(id: params[:id])
+    @favoritefestivals = FavoriteFestival.where(user_id: @user.id).all
+  end
+
   def create
   end
 
   def destroy
+    
   end
+
 
   private
 

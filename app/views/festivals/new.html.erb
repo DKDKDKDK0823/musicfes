@@ -1,10 +1,11 @@
 <div id="wrapper">
     <%= render 'layouts/user-nav' %>
 </div>
+<%= render 'layouts/top-nav' %>
 <div class="container">
     <div class="row">
         <div class="col-xs-6 col-lg-offset-3">
-            <%= form_for @festival, url: "/festivals"  do |f| %>
+            <%= form_with model: @festival, local: true do |f| %>
             <h1>投稿</h1>
             <table class="table">
                 <tbody>
@@ -14,7 +15,9 @@
                     <tr><th>開催日</th><th> <%= f.datetime_select :day, class: "form-control" %> </th></tr>
                     <tr><th>開催地域</th><th><%= f.text_field :regions, class: "form-control" %></th></tr>
                     <tr><th>コメント</th><th><%= f.text_area :introduction, class: "form-control" %></th></tr>
-                    <tr><th>画像</th><th><%= f.attachment_field :image, class: "form-control" %></th></tr>
+                    <tr><th>写真</th><th>
+                                         <%= f.file_field :images, multiple: true %><br>
+                                         
                     <tr><th></th><td>
                     <div class="nested-fields form-inline">
                     <%# <%= f.fields_for :artists do |a| %> %>
