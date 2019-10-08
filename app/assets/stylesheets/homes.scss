@@ -4,13 +4,6 @@
 
 
 
-.home-top {
-    background-image: url('home-top.jpeg');
-    background-size: cover;
-    background-position: center;
-    height: 800px;
-    position: relative;
-}
 
 .top-contents {
     text-align: center;
@@ -21,6 +14,7 @@
     text-align: center;
     opacity: 0.7;
     color: white;
+    margin: 0 auto;
 }
 
 .text {
@@ -29,4 +23,31 @@
     opacity: 0.7;
     color: white;
     margin-top: 20px;
+    margin: 0 auto;
 }
+
+#skippr-container{
+	height: 800px;
+  }
+  .image1{
+  background-image: url(home-top.jpeg);
+  position: relative;
+  
+  }
+  .image2{
+  background-image: url(skipper2.jpeg);
+  background-position: center;
+  position: relative;
+  }
+  .image3{
+  background-image: url(skipper3.jpeg);
+  background-position: center;
+  position: relative;
+  }
+
+  .image4{
+	background-image: url(skipper1.jpeg);
+	background-position: center;
+	position: relative;
+  }
+	

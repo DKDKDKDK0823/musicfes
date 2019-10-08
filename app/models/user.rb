@@ -11,13 +11,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          attachment :profile_image
+         has_many_attached :images
          validates :last_name, presence: true
          validates :first_name, presence: true
          validates :last_name_kana, presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
          validates :first_name_kana, presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
          validates :email, presence: true
-
- 
-         has_many :favorites, dependent: :destroy
+         has_many :favorite_festivals, dependent: :destroy
+         has_many :festivals, dependent: :destroy
  
 end

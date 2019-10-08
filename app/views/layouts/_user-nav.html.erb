@@ -1,0 +1,22 @@
+<p class="btn-gnavi">
+    <span></span>
+    <span></span>
+    <span></span>
+    
+</p>
+<nav id="global-navi">
+    <ul class="menu">
+        <% if user_signed_in? %>
+        <li><%= link_to '・トップページ', "/festivals" %></li>
+        <li><%= link_to '・マイページ', "/users/#{current_user.id}" %></li>
+        <li><%= link_to '★アーティスト一覧', "/favorite_artists/index" %></li>
+        <li><%= link_to '♡フェス一覧', "/users/#{current_user.id}/favorite_festtivals" %></li>
+        <li><%= link_to '・新規投稿', "/festivals/new" %></li>
+        <li><%= link_to '・ログアウト', "/users/sign_out", method: :delete %></li>
+        <% else %>
+         <li><%= link_to 'トップページ', "/festivals" %></li>
+         <li><%= link_to 'ログイン', "/users/sign_in" %></li>
+         <li><%= link_to '新規登録', "/users/sign_up" %></li>
+        <% end %>
+    </ul>
+</nav>

@@ -1,0 +1,25 @@
+<div id="wrapper">
+    <%= render 'layouts/user-nav' %>
+</div>
+<div class="container">
+    <div class="row">
+    <%= form_for @artist, url: "/artists"  do |f| %>
+        <div class="col-lg-6">
+            <div class="row">
+            <%= f.file_field :image_id, class: "form-control" %>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+            <%= f.text_field :name, class: "form-control" %>
+            <%= f.submit '登録',  class: "btn-flat-border" %>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>
+<div class="sam">
+    <% @artists.each do |f| %>
+        <%= f.name %>
+    <% end %>
+</div>
