@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def favorite_festivals
     @user = User.find_by(id: params[:id])
-    @favoritefestivals = FavoriteFestival.where(user_id: @user.id).all
+    @favoritefestivals = FavoriteFestival.where(user_id: @user.id)
   end
 
   def create

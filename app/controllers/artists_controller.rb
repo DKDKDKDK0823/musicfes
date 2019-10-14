@@ -13,7 +13,7 @@ class ArtistsController < ApplicationController
   def destroy
   end
 
-  def edit
+  def editd
   end
 
   def update
@@ -22,7 +22,7 @@ class ArtistsController < ApplicationController
   private
 
   def artist_params
-    params.require(:artist).permit(:name, :image_id)
+    params.require(:artist).permit(:name, :image)
   end
 
 end

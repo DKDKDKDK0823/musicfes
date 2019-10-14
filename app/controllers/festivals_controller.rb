@@ -21,6 +21,9 @@ class FestivalsController < ApplicationController
     @festivaluser = @festival.user
   end
 
+  def map
+  end
+
   def new
     @artists = Artist.all
     @festival = Festival.new
@@ -63,7 +66,7 @@ class FestivalsController < ApplicationController
   private
 
   def festival_params
-    params.require(:festival).permit(:name, :price, :genre, :day, :regions, :introduction, images: [], artist_attributes:[:id, :artist_id, :_destroy])
+    params.require(:festival).permit(:name, :price, :genre, :day, :regions, :introduction, :adress, images: [], artist_attributes:[:id, :artist_id, :_destroy])
   end
 
   def search_params

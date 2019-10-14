@@ -21,13 +21,14 @@
 //= require uikit-icons.min
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require infinite-scroll.pkgd.min
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
 
  
 
 
-$(document).ready(function () {
+$(document).on('turbolinks:load', function () {
     $(".btn-gnavi").on("click", function() {
         var rightVal = 0;
         
@@ -46,11 +47,42 @@ $(document).ready(function () {
 
 $(document).on('turbolinks:load', function(){
     $('.slider').slick({
-      autoplay:true,  
-      accessibility:true,
-      arrows:true,
-      centerMode:false,
-      swipe:true,	
+        centerMode: true,
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
     });
+    
   });
 
+  $(document).on('turbolinks:load', function(){
+    $('.slider1').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        infinite: true,
+        dots: true,
+        arrows: false,
+      });
+  });
+
+ $(document).on('turbolinks:load', function() {
+    $('.slider-show').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        asNavFor: '.slider-show',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true
+      });
+});

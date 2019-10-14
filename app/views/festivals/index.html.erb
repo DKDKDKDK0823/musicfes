@@ -4,46 +4,48 @@
 <%= render 'layouts/top-nav' %>
 <div class="container">
     <div class="row">
-        <% @fastivals.each do |festival| %>
-        <div class="col-lg-12 index-festival">
-            <div class="row">
-                <div class="col-xs-4">
-                        <% if festival.images.attached? %>
-                        <div class="slider">
-                        <% festival.images.each do |image| %> 
-                            <div>
-                                    <%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center, border:'2', bordercolor:'#00CCCC'}).processed %>
+        <div id="jscroll">
+            <% @fastivals.each do |festival| %>
+            <div class="col-lg-12 index-festival">
+                <div class="row">
+                    <div class="col-xs-4 image-festival">
+                            <% if festival.images.attached? %>
+                            <div class="slider">
+                            <% festival.images.each do |image| %> 
+                                <div>
+                                    <%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center}).processed %>
+                                </div>
+                            <% end %> 
                             </div>
-                        <% end %> 
-                        </div>
-                        <% end %>
-                </div>
-                    <div class="col-xs-6">
-                    <%= link_to "/users/#{festival.user.id}" do %> 
-                        <table class="table">
-                            <tbody>
-                                
-                                    <tr><th><%= festival.user.name %></th><th><%= attachment_image_tag  festival.user, :profile_image, :fill, 50, 50, format: 'jpeg',fallback: 'no_image.png', size: "50x50", class: 'user-image' %></th></tr>
-                    
-                            </tbody>
-                        </table>
-                    <% end %>
-                    <%= link_to "/festivals/#{festival.id}" do %> 
-                    <table class="table">
-                            <tbody>
-                                    <tr><th>名前</th><th> <%= festival.name %></th></tr>
-                                    <tr><th>ジャンル</th><th><%=  festival.genre %></th></tr>　
-                                    <tr><th>コメント</th><th> <%= festival.introduction %></th></tr>
-                                
-                                
-                            </tbody>
-                        </table> 
-                    <% end %>
-                        <%= render 'festivals/favorite_festivals', festival: festival %>
+                            <% end %>
                     </div>
-                </div>
+                        <div class="col-xs-6">
+                        <%= link_to "/users/#{festival.user.id}" do %> 
+                            <table class="table">
+                                <tbody>
+                                    
+                                        <tr><th><%= festival.user.name %><%= attachment_image_tag  festival.user, :profile_image, :fill, 50, 50, format: 'jpeg',fallback: 'no_image.png', size: "50x50", class: 'user-image' %></th></th></tr>
+                        
+                                </tbody>
+                            </table>
+                        <% end %>
+                        <%= link_to "/festivals/#{festival.id}" do %> 
+                        <table class="table">
+                                <tbody>
+                                        <tr><th>名前</th><th> <%= festival.name %></th></tr>
+                                        <tr><th>ジャンル</th><th><%=  festival.genre %></th></tr>　
+                                        <tr><th>コメント</th><th> <%= festival.introduction %></th></tr>
+                                    
+                                    
+                                </tbody>
+                            </table> 
+                        <% end %>
+                            <%= render 'festivals/favorite_festivals', festival: festival %>
+                        </div>
+                    </div>
+            </div>
+            <% end %>
+            <%= paginate @festival %>
         </div>
-        <% end %>
-        <%= paginate @festival %>
     </div>
 </div>

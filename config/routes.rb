@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   resources :favorite_artists
   resources :artists
+  get '/festivals/map' => 'festivals#map'
   resources :festivals
   get '/festivals' =>'festivals#search'
   resources :regions,only: [:index, :destroy]

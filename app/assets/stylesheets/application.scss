@@ -262,3 +262,77 @@ input, select {
   z-index: 1;
   width: 100%;
 }
+
+.slider img {
+  width: auto;
+  margin: 0 auto; /* it centers any block level element */
+  border-radius: 20px;
+}
+
+.slider-show img {
+  width: auto;
+  margin: 0 auto; /* it centers any block level element */
+  border-radius: 20px;
+}
+
+.slick-prev:before,
+ .slick-next:before {
+   color: black;
+ }
+
+ .slick-prev::before {
+  position: relative;
+  content: "\f060";
+  font-family: FontAwesome;
+  opacity: 1;
+    }
+
+.slick-next::before {
+  position: relative;
+  content: "\f061";
+  font-family: FontAwesome;
+  opacity: 1;
+    }
+
+
+
+.slick-prev:hover:before{
+animation: arrow_prev .5s ease-out forwards;
+}
+@keyframes arrow_prev {
+0% {
+right: 0px;
+}
+50% {
+right: 5px;
+}
+100% {
+    right: 0;
+}
+}
+
+.slick-next:hover:before{
+animation: arrow_next .5s ease-out forwards;
+  }
+@keyframes arrow_next {
+0% {
+left: 0px;
+}
+50% {
+left: 5px;
+}
+100% {
+left: 0;
+}
+}
+
+
+.slider-nav {
+  margin-top: 50px;
+}
+
+.slider-nav img {
+  border-radius: 20px;
+  width: auto;
+  margin: 0 auto; /* it centers any block level element */
+}
