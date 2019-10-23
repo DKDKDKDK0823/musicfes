@@ -10,7 +10,79 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//
+//= require jquery
+//= require jquery-ui
 //= require rails-ujs
+//= require cocoon
 //= require activestorage
+//= require autocomplete-rails
+//= require uikit.min
+//= require uikit-icons.min
+//= require bootstrap-sprockets
 //= require turbolinks
+//= require infinite-scroll.pkgd.min
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
+
+ 
+
+
+$(document).on('turbolinks:load', function () {
+    $(".btn-gnavi").on("click", function() {
+        var rightVal = 0;
+        
+        if($(this).hasClass("open")) {
+            rightVal = -300;
+            $(this).removeClass("open");
+        } else {
+            $(this).addClass("open");
+        } 
+        $("#global-navi").stop().animate({
+            right: rightVal
+        }, 200);
+    });
+    
+});
+
+$(document).on('turbolinks:load', function(){
+    $('.slider').slick({
+        centerMode: true,
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+    });
+    
+  });
+
+  $(document).on('turbolinks:load', function(){
+    $('.slider1').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        infinite: true,
+        dots: true,
+        arrows: false,
+      });
+  });
+
+ $(document).on('turbolinks:load', function() {
+    $('.slider-show').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        asNavFor: '.slider-show',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true
+      });
+});

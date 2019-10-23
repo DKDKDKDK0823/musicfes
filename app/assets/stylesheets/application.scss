@@ -1,0 +1,338 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_tree ../../../vendor/assets/stylesheets/.
+ *= require_self
+ */
+
+
+@import "slick-theme"; 
+@import "slick";
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+@import 'font-awesome-sprockets';
+@import 'font-awesome'; 
+
+@import "uikit.min";
+
+ 
+
+
+html{
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+    font-family: "メイリオ", "Lucida Grande", Verdana, "ＭＳ Ｐゴシック", sans-serif;
+    margin-bottom:100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.header {
+	width: 100%;
+	background-color: rgb(158, 158, 160);
+	display: inline-block;
+	text-align: center;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+}
+
+
+
+#wrapper nav {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  right: -300px;
+  width: 300px;
+  padding-top: 50px;
+  background: rgba(33,33,33,.9);
+  font-size: 16px;
+  box-sizing: border-box;
+  z-index: 2
+}
+
+#wrapper nav ul li {
+  padding: 20px 28px
+}
+
+#wrapper nav ul li a {
+  text-decoration: none;
+  color: #ddd
+}
+
+#wrapper .btn-gnavi {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 24px;
+  z-index: 3;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-transition: all 400ms;
+  transition: all 400ms
+}
+
+#wrapper .btn-gnavi span {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: rgb(202, 187, 187);
+  border-radius: 10px;
+  -webkit-transition: all 400ms;
+  transition: all 400ms
+}
+
+#wrapper .btn-gnavi span:nth-child(1) {
+  top: 0
+}
+
+#wrapper .btn-gnavi span:nth-child(2) {
+  top: 10px
+}
+
+#wrapper .btn-gnavi span:nth-child(3) {
+  top: 20px
+}
+
+#wrapper .btn-gnavi.open {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg)
+}
+
+#wrapper .btn-gnavi.open span {
+  background: #fff
+}
+
+#wrapper .btn-gnavi.open span:nth-child(1) {
+  width: 24px;
+  -webkit-transform: translate(-7px,17px) rotate(45deg);
+  transform: translate(-7px,17px) rotate(45deg)
+}
+
+#wrapper .btn-gnavi.open span:nth-child(3) {
+  width: 24px;
+  -webkit-transform: translate(-7px,-17px) rotate(-45deg);
+  transform: translate(-7px,-17px) rotate(-45deg)
+}
+
+
+#wrapper .contents section:nth-child(odd) p {
+  left: 10%
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select {
+    vertical-align: middle;
+}
+
+.user-image {
+  border-radius: 50%;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+.top-nav {
+  background: rgba(33,33,33,.9);
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.slider img {
+  width: auto;
+  margin: 0 auto; /* it centers any block level element */
+  border-radius: 20px;
+}
+
+.slider-show img {
+  width: auto;
+  margin: 0 auto; /* it centers any block level element */
+  border-radius: 20px;
+}
+
+.slick-prev:before,
+ .slick-next:before {
+   color: black;
+ }
+
+ .slick-prev::before {
+  position: relative;
+  content: "\f060";
+  font-family: FontAwesome;
+  opacity: 1;
+    }
+
+.slick-next::before {
+  position: relative;
+  content: "\f061";
+  font-family: FontAwesome;
+  opacity: 1;
+    }
+
+
+
+.slick-prev:hover:before{
+animation: arrow_prev .5s ease-out forwards;
+}
+@keyframes arrow_prev {
+0% {
+right: 0px;
+}
+50% {
+right: 5px;
+}
+100% {
+    right: 0;
+}
+}
+
+.slick-next:hover:before{
+animation: arrow_next .5s ease-out forwards;
+  }
+@keyframes arrow_next {
+0% {
+left: 0px;
+}
+50% {
+left: 5px;
+}
+100% {
+left: 0;
+}
+}
+
+
+.slider-nav {
+  margin-top: 50px;
+}
+
+.slider-nav img {
+  border-radius: 20px;
+  width: auto;
+  margin: 0 auto; /* it centers any block level element */
+}

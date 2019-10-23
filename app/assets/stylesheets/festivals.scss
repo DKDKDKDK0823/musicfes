@@ -1,3 +1,37 @@
 // Place all the styles related to the festivals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ul {
+    list-style: none;
+  }
+
+.index-festival {
+    margin-bottom: 30px;
+    box-shadow:0px 0px 10px;
+    border:1px solid #000;
+    background-color: white;
+    border-radius: 30px
+}
+
+
+.fes-artist {
+  margin-top: 50px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+.showtime {
+  margin-bottom: 50px;
+}
+
+.artist img {
+  border-radius: 40px;
+  border: 1px solid #BBB;
+}
+
+.show-art {
+  margin-bottom: 15px;
+}

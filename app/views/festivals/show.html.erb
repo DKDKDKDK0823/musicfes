@@ -1,2 +1,98 @@
-<h1>Festivals#show</h1>
-<p>Find me in app/views/festivals/show.html.erb</p>
+<div id="wrapper">
+    <%= render 'layouts/user-nav' %>
+</div>
+
+<%= render 'layouts/top-nav' %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 index-festival">
+            <div class="row showtime">
+                <div class="col-xs-4">
+                    <%= link_to "/users/#{@festival.user.id}" do %> 
+                        <%= @festivaluser.name %>
+                        <%= attachment_image_tag  @festival.user, :profile_image, :fill, 50, 50, format: 'jpeg',fallback: 'no_image.png', size: "50x50", class: 'user-image' %>
+                    <% end %>
+                    <% if @festival.images.attached? %>    
+                        <div class="slider-show">            
+                            <% @festival.images.each do |image| %>
+                                <div><%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center}).processed %></div>
+                            <% end %>
+                        </div>                 
+                    <% end %>
+                    <% if @festival.images.attached? %>    
+                        <div class="slider-nav">            
+                            <% @festival.images.each do |image| %>
+                                <div><%= image_tag image.variant(combine_options:{resize:"100x100^",crop:"100x100+0+0",gravity: :center}).processed %></div>
+                            <% end %>
+                        </div>                 
+                    <% end %>                
+                </div>
+            <div class="col-xs-6">
+                <table class="table">
+                    <tbody>
+                        <tr><th>名前</th><th> <%= @festival.name %></th></tr>
+                        <tr><th>値段</th><th>  <%= @festival.price %> </th></tr>
+                        <tr><th>ジャンル</th><th><%= @festival.genre %></th></tr>
+                        <tr><th>開催日</th><th> <%= @festival.day %></th></tr>
+                        <tr><th>開催地域</th><th><%= @festival.adress %></th></tr>
+                         <tr><th>開催地地図</th><th>
+                            <input id="address" type="textbox" value="Sydney, NSW">
+                            <input type="button" value="Encode" onclick="codeAddress()">
+                            <div id='map'></div></th></tr>
+                        <tr><th>コメント</th><th> <%= @festival.introduction %></th></tr>
+                        <tr><th></th><th><%= render 'festivals/favorite_festivals', festival: @festival %></th></tr>
+                        <tr><th>編集</th><th><%= link_to "投稿編集", "/festivals/#{@festival.id}/edit", class: "btn-flat-border" %><%= link_to "Destroy", festival_path(@festival), method: :delete, class: "btn btn-danger btn-xs destroy_festival_#{@festival.id}", "data-confirm" => "Are you Sure?" %></th></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-12　fes-artist-show">
+        <p>出演アーティスト</p>
+            <% @fes_artists.each do |f| %>
+            <div class="col-xs-2 fes-artist">
+                <div class="row">
+                <%= link_to "/artists/#{f.artist_id}" do %>
+                     <% if f.artist.image.attached? %>
+                        <div class="artist">
+                            <%= image_tag f.artist.image.variant(combine_options:{resize:"100x100^",crop:"100x100+0+0",gravity: :center}).processed %> <br>
+                        </div>
+                    <% end %>
+                    <%= f.artist.name %>
+                <% end %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+ </div>
+
+<style>
+    #map{   
+    height: 200px;
+    }
+</style>
+
+<script>
+    var map;
+    let geocoder
+    var marker;
+    var infoWindow;
+
+function initMap(){
+
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: <%= @festival.latitude %>, lng: <%= @festival.longitude %> },
+    zoom: 8
+    });
+        
+
+        　　　　　　　　　　　
+    var adress = {lat: <%= @festival.latitude %>, lng: <%= @festival.longitude %> };
+        marker = new google.maps.Marker({
+        map: map,
+        position: adress,
+            
+    });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADd7HfuXWmrAbFLpvt7JVx5hhvmiu_vv0&callback=initMap" async defer></script>

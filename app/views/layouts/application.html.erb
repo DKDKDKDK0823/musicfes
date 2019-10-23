@@ -4,13 +4,37 @@
     <title>Music</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body>
   <div></div>
-    <%= yield %
+    <%= yield %>
   </body>
+  <script>
+  $(function() {
+    $(document).ready(function () {
+        $("#festival-image").skippr({
+            transition : 'slide',
+            speed : 1000,
+            easing : 'easeOutQuart',
+            navType : 'block',
+            childrenElementType : 'div',
+            arrows : true,
+            autoPlay : true,
+            autoPlayDuration : 8000,
+            keyboardOnAlways : true,
+            hidePrevious : false
+        });
+        console.log('aaa');
+      });
+      
+  });
+  </script>
+
 </html>
+

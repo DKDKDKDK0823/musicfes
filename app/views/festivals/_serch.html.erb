@@ -1,0 +1,12 @@
+<div class="header">
+  <div class="nav navbar-nav">
+    <%= search_form_for @q, url: festivals_path do |f| %>
+    <div class="form-group">
+      <%= f.label :name_cont, "商品の名前" %>
+      <%= f.search_field :name_cont, class: "form-control" %>
+    </div>
+    <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+
+  </div>
+</div>
