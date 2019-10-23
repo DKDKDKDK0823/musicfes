@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 index-festival">
-            <div class="row">
+            <div class="row showtime">
                 <div class="col-xs-4">
                     <%= link_to "/users/#{@festival.user.id}" do %> 
                         <%= @festivaluser.name %>
@@ -34,7 +34,7 @@
                         <tr><th>値段</th><th>  <%= @festival.price %> </th></tr>
                         <tr><th>ジャンル</th><th><%= @festival.genre %></th></tr>
                         <tr><th>開催日</th><th> <%= @festival.day %></th></tr>
-                        <tr><th>開催地域</th><th><%= @festival.regions %></th></tr>
+                        <tr><th>開催地域</th><th><%= @festival.adress %></th></tr>
                          <tr><th>開催地地図</th><th>
                             <input id="address" type="textbox" value="Sydney, NSW">
                             <input type="button" value="Encode" onclick="codeAddress()">
@@ -46,60 +46,53 @@
                 </table>
             </div>
         </div>
-        <div class="col-lg-12">
-            <div class="row">
-                <h1>出演アーティスト</h1>
-                <div class="col-lg-2">
-                    <>
+        <div class="col-lg-12　fes-artist-show">
+        <p>出演アーティスト</p>
+            <% @fes_artists.each do |f| %>
+            <div class="col-xs-2 fes-artist">
+                <div class="row">
+                <%= link_to "/artists/#{f.artist_id}" do %>
+                     <% if f.artist.image.attached? %>
+                        <div class="artist">
+                            <%= image_tag f.artist.image.variant(combine_options:{resize:"100x100^",crop:"100x100+0+0",gravity: :center}).processed %> <br>
+                        </div>
+                    <% end %>
+                    <%= f.artist.name %>
+                <% end %>
                 </div>
             </div>
-            <div class="col-lg-2">
-                <h4>出演アーティスト登録</h4>
-                <p><%= link_to "アーティスト登録", "/artists/new" %></p>
-            </div>
+            <% end %>
         </div>
     </div>
  </div>
 
 <style>
-    #map{
+    #map{   
     height: 200px;
     }
 </style>
 
 <script>
-    let map
+    var map;
     let geocoder
+    var marker;
+    var infoWindow;
 
-    function initMap(){
-    // geocoderを初期化
-    geocoder = new google.maps.Geocoder()
+function initMap(){
 
     map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: <%= @festival.latitude %>, lng: <%= @festival.longitude %> },
     zoom: 8
     });
-    }
+        
 
-    function codeAddress(){
-    // 入力を取得
-    let inputAddress = document.getElementById('address').value;
-
-    // geocodingしたあとmapを移動
-    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-        if (status == 'OK') {
-    　　　　　　　　　　　　// map.setCenterで地図が移動
-        map.setCenter(results[0].geometry.location);
-
-    　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-        } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-        }
+        　　　　　　　　　　　
+    var adress = {lat: <%= @festival.latitude %>, lng: <%= @festival.longitude %> };
+        marker = new google.maps.Marker({
+        map: map,
+        position: adress,
+            
     });
-    }
+}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADd7HfuXWmrAbFLpvt7JVx5hhvmiu_vv0&callback=initMap" async defer></script>

@@ -31,15 +31,15 @@
 				<% @userfestivals.each do |festival| %>
 				<div class="col-lg-2">
 					<div class="row">
-							<%= link_to "/festivals/#{festival.id}" do %>
-								<% if festival.images.attached? %>
-								<div class="slider1">
-								<% festival.images.each do |image| %> 
-									<div><%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center, border:'2', bordercolor:'#00CCCC'}).processed %></div>
-								<% end %> 
-								</div>
-								<% end %>
+						<%= link_to "/festivals/#{festival.id}" do %>
+							<% if festival.images.attached? %>
+							<div class="slider1">
+							<% festival.images.each do |image| %> 
+								<div><%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center, border:'2', bordercolor:'#00CCCC'}).processed %></div>
+							<% end %> 
+							</div>
 							<% end %>
+						<% end %>
 					</div>
 				</div>
 				<% end %>

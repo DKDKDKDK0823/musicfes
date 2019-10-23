@@ -11,11 +11,22 @@
                 <tbody>
                     <tr><th>名前</th><th> <%= f.text_field :name, class: "form-control" %> </th></tr>
                     <tr><th>値段</th><th> <%= f.text_field :price, class: "form-control" %> </th></tr>
-                    <tr><th>開催日</th><th> <%= f.datetime_select :day, class: "form-control" %> </th></tr>
-                    <tr><th>開催地域</th><th> <%= f.text_field :regions, class: "form-control" %> </th></tr>
+                    <tr><th>開催日</th><th> <%= f.date_field :day, class: "form-control" %> </th></tr>
                     <tr><th>ジャンル</th><th><%= f.text_field :genre, class: "form-control" %></th></tr>
+                    <tr><th>開催地域</th><th><%= f.text_field :adress, class: "form-control" %></th></tr>
                     <tr><th>コメント</th><th><%= f.text_area :introduction, class: "form-control" %></th></tr>
-                    <tr><th>画像</th><th><%= f.attachment_field :image, class: "form-control" %></th></tr>
+                    <tr><th>画像</th><th><%= f.file_field :images, multiple: true %></th></tr>
+                    <tr><th>出演アーティスト</th><th>
+                    <div class="field">
+                        <%= f.fields_for :fes_artists do |fin| %>
+                             <%= render 'fes_artist_fields', f: fin %>
+                        <% end %>
+                    </div>
+                    <div class="field">
+                        <%= link_to_add_association '追加する', f, :fes_artists, data: { association_insertion_method: 'before' } %>
+                        <%= link_to "アーティスト登録", "/artists/new" %>
+                    </div>                  
+                    </th></tr>
                     <tr><th></th><th><%= f.submit '更新',  class: "btn-flat-border btn-block" %></th></tr>
                     <tr><th>削除</th><th><%= link_to "削除", "/festivals/#{@festival.id}",　method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-flat-border" %></th></tr>
                 </tbody>
@@ -25,7 +36,6 @@
         </div>
     </div>
 </div>
-
 
 
 

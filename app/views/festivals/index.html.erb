@@ -29,18 +29,20 @@
                                 </tbody>
                             </table>
                         <% end %>
-                        <%= link_to "/festivals/#{festival.id}" do %> 
-                        <table class="table">
-                                <tbody>
-                                        <tr><th>名前</th><th> <%= festival.name %></th></tr>
-                                        <tr><th>ジャンル</th><th><%=  festival.genre %></th></tr>　
-                                        <tr><th>コメント</th><th> <%= festival.introduction %></th></tr>
-                                    
-                                    
-                                </tbody>
-                            </table> 
-                        <% end %>
-                            <%= render 'festivals/favorite_festivals', festival: festival %>
+                        <span data-turbolinks="false">
+                            <%= link_to "/festivals/#{festival.id}" do %> 
+                            <table class="table">
+                                    <tbody>
+                                            <tr><th>名前</th><th> <%= festival.name %></th></tr>
+                                            <tr><th>ジャンル</th><th><%=  festival.genre %></th></tr>　
+                                            <tr><th>コメント</th><th> <%= festival.introduction %></th></tr>
+                                        
+                                        
+                                    </tbody>
+                                </table> 
+                            <% end %>
+                        </span>
+                        <%= render 'festivals/favorite_festivals', festival: festival %>
                         </div>
                     </div>
             </div>

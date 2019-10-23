@@ -1,0 +1,2 @@
+module FesArtistsHelper
+end

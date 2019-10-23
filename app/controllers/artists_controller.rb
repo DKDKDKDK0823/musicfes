@@ -4,6 +4,11 @@ class ArtistsController < ApplicationController
      @artist = Artist.new
   end
 
+  def show
+    @artist = FesArtist.find(params[:id])  
+    @artistfestivals = FesArtist.where(artist_id: @artist)
+  end
+
   def create
     @artist = Artist.new(artist_params)
     @artist.save

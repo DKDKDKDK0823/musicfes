@@ -1,0 +1,16 @@
+<div id="wrapper">
+    <%= render 'layouts/user-nav' %>
+</div>
+<%= render 'layouts/top-nav' %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 off-set-3">
+            <%= form_with model: @fes_artist, local: true do |f| %>
+            <div class="nested-fields form-inline">
+                <%= f.collection_select(:artist_id,@artists,:id,:name) %> 
+            </div>
+                <%= f.submit '登録',  class: "btn-flat-border" %>
+            <% end %>
+        </div>
+    </div>
+</div>

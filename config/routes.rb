@@ -3,11 +3,15 @@ Rails.application.routes.draw do
 
 
 
+
+
   root 'homes#top'
+  get '/map' => 'homes#map'
   resources :favorite_artists
   resources :artists
   get '/festivals/map' => 'festivals#map'
   resources :festivals
+  resources :fes_artists 
   get '/festivals' =>'festivals#search'
   resources :regions,only: [:index, :destroy]
   devise_for :users, controllers: {

@@ -19,14 +19,14 @@ class FestivalsController < ApplicationController
   def show
     @festival = Festival.find(params[:id])   
     @festivaluser = @festival.user
+    @fes_artists = @festival.fes_artists
   end
 
-  def map
-  end
 
   def new
     @artists = Artist.all
     @festival = Festival.new
+    @festival.fes_artists.build
   end
 
   def create
@@ -39,6 +39,8 @@ class FestivalsController < ApplicationController
 
   def edit
     @festival = Festival.find(params[:id])
+    @artists = Artist.all
+    @festival.fes_artists.build
   end
 
   def update
@@ -66,7 +68,7 @@ class FestivalsController < ApplicationController
   private
 
   def festival_params
-    params.require(:festival).permit(:name, :price, :genre, :day, :regions, :introduction, :adress, images: [], artist_attributes:[:id, :artist_id, :_destroy])
+    params.require(:festival).permit(:name, :price, :genre, :day, :regions, :latitude, :longitude, :introduction, :adress, :fes_artist_id, images: [], fes_artists_attributes:[:id, :artist_id, :festival_id, :_destroy])
   end
 
   def search_params

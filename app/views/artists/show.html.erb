@@ -1,0 +1,30 @@
+<div id="wrapper">
+    <%= render 'layouts/user-nav' %>
+</div>
+<%= render 'layouts/top-nav' %>
+<div class="container">
+    <div class="row">    
+        <% if @artist.artist.image.attached? %>
+        <div class="artist">
+            <%= @artist.artist.name %>の出演フェス
+            <%= image_tag @artist.artist.image.variant(combine_options:{resize:"100x100^",crop:"100x100+0+0",gravity: :center}).processed %> 
+        </div>
+        <% end %>
+        <% @artistfestivals.each do |fsetival| %>
+            <div class="col-lg-2">
+                <div class="row">
+                    <%= link_to "/festivals/#{fsetival.id}" do %>
+                        <% if fsetival.festival.images.attached? %>
+                            <div class="slider1">
+                                <% fsetival.festival.images.each do |image| %> 
+                                    <div><%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center}).processed %></div>
+                                <% end %>
+                            <% end %>
+                                <%= fsetival.festival.name %>
+                            </div>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
