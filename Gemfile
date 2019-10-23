@@ -81,3 +81,8 @@ gem 'execjs'
 gem 'ransack'
 gem 'geocoder'
 gem 'http'
+gem 'json'
+group :production do
+  gem 'mysql2'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+end
