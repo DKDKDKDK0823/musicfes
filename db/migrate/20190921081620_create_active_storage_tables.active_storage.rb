@@ -1,7 +1,7 @@
 # This migration comes from active_storage (originally 20170806125915)
 class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
   def change
-    create_table :active_storage_blobs do |t|
+    create_table :active_storage_blobs, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.string   :key,        null: false
       t.string   :filename,   null: false
       t.string   :content_type

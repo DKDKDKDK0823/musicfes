@@ -11,9 +11,9 @@
                 <tbody>
                     <tr><th>名前</th><th> <%= f.text_field :name, class: "form-control" %> </th></tr>
                     <tr><th>値段</th><th> <%= f.text_field :price, class: "form-control" %> </th></tr>
-                    <tr><th>ジャンル</th><th> <%= f.text_field :genre, class: "form-control" %> </th></tr>
                     <tr><th>開催日</th><th> <%= f.date_field :day, class: "form-control" %> </th></tr>
                     <tr><th>開催地域</th><th><%= f.text_field :adress, class: "form-control" %></th></tr>
+                    <tr><th>ジャンル</th><th> <%= f.text_field :genre, class: "form-control" %> </th></tr>
                     <tr><th>コメント</th><th><%= f.text_area :introduction, class: "form-control" %></th></tr>
                     <tr><th>写真</th><th>
                                          <%= f.file_field :images, multiple: true %><br>
