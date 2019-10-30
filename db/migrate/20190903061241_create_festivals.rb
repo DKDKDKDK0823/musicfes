@@ -4,9 +4,14 @@ class CreateFestivals < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :image_id
       t.string :price
-      t.integer :region_id
-      t.integer :genre_id
-      t.integer :day_id
+      t.string :region
+      t.string :genre
+      t.date :day
+      t.string  :adress
+      t.integer :user_id
+      t.integer :fes_artist_id
+      t.decimal :latitude, precision: 10, scale: 6 
+      t.decimal :longitude, precision: 10, scale: 6 
       t.boolean :is_deleted, default: false
 
       t.timestamps
