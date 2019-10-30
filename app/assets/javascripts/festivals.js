@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function(){
         // 画像の遅延表示。‘ondemand’or'progressive'
         lazyLoad: 'ondemand',
         // スライドのエリアにマウスオーバーしている間、自動再生を止めるかどうか。
-        pauseOnHover: true
+        pauseOnHover: true,
         // スライドのエリアに画像がいくつ表示されるかを指定
         slidesToShow: 4,
         // 一度にスライドする数
