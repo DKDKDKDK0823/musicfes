@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_070409) do
     t.integer "fes_artist_id"
     t.text "content"
     t.string "adress"
-    t.decimal "latitude", precision: 10, scale: 6 
-    t.decimal "longitude", precision: 10, scale: 6 
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
   end
 
   create_table "likes", force: :cascade do |t|
