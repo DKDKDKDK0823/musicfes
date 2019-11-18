@@ -1,4 +1,4 @@
-<div class="nested-fields">
+<div class="nested-fields field">
     <%= f.collection_select(:artist_id,@artists,:id,:name) %> 
-    <%= link_to_remove_association '削除', f %>
+    <%= link_to_remove_association '削除', f ,class: "btn btn-danger" %>
 </div>

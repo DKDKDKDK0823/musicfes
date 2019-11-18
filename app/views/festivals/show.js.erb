@@ -1,1 +1,4 @@
-console.log('hoge')
+$('#items').append("<%= escape_javascript(render 'festival-item', object: @festival) %>")
+$("#more_link").replaceWith("<%= escape_javascript(
+  link_to_next_page(@festival, 'more', remote: true, id: 'more_link', class: "btn-flat-border")
+) %>");

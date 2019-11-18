@@ -1,50 +1,100 @@
 <div id="wrapper">
     <%= render 'layouts/user-nav' %>
 </div>
-
-<div class="contatiner">
-    <div class="row">
-		<div class="col-xs-6 col-lg-offset-3">
-			<table class="table">
-				<tbody>
-						<td>ユーザー名</td>
-						<td><%= @user.name %></td>
-						<td></td>
-					</tr>
-                     <tr>
-						<td>自己紹介文</td>
-						<td><%= @user.introduction %></td>
-						<td></td>
-					</tr>
-                    <tr>
-						<td>プロフ画像</td>
-						<td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: "jpeg", fallback: "no_image.png", size: "100x100", class: 'user-image' %></td>
-						<td></td>
-					</tr>
- 
-                    <tr>
-                        <td><%= link_to "編集", "/users/#{@user.id}/edit", class: "btn-flat-border" %>
-                    </tr>
-				</tbody>
-			</table>
-			<div class="col-lg-12">
-				<% @userfestivals.each do |festival| %>
-				<div class="col-lg-2">
-					<div class="row">
-						<%= link_to "/festivals/#{festival.id}" do %>
-							<% if festival.images.attached? %>
-							<div class="slider1">
-							<% festival.images.each do |image| %> 
-								<div><%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center, border:'2', bordercolor:'#00CCCC'}).processed %></div>
-							<% end %> 
+<%= render 'layouts/top-nav' %>
+<div class="jumbotron background-image1">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 box">
+				<div class="col-xs-10 col-lg-offset-1  user-index">
+					<div class="col-lg-12 user-canabis">
+						<div class="col-lg-8 col-lg-offset-2">
+							<h2 class="text-center"><i class="far fa-grin"></i><%= @user.name %>のページ<i class="far fa-grin"></i></h2>
+						</div>
+					</div>
+					<div class="col-lg-12 user-image-box">
+						<div class="col-lg-5">
+							<div class="user-image">
+								<%= attachment_image_tag @user, :profile_image, :fill, 250, 250, format: "jpeg", fallback: "no_image.png", size: "250x250", class: 'user-image' %>
 							</div>
-							<% end %>
+						</div>
+						<div class="col-lg-6 user-name">
+							<div class="col-lg-4 show">
+								<p class="text-left"><i class="fas fa-cannabis"></i>NAME</p>
+							</div>
+							<div class="col-lg-8 show1">
+								<p class="text-left"><%= @user.name %></p>
+							</div>
+						</div>
+						<div class="col-lg-6 user-name">
+							<div class="col-lg-4 show">
+								<p class="text-left"><i class="fas fa-cannabis"></i>住所</p>
+							</div>
+							<div class="col-lg-8">
+								<h1><p class="text-left"><%= @user.adress %></p>
+							</div>
+						</div>
+						<div class="col-lg-6 user-name">
+							<div class="col-lg-4 show">
+								<p class="text-left"><i class="fas fa-cannabis"></i>PR</p>
+							</div>
+							<div class="col-lg-8">
+								<p class="text-left"><%= @user.introduction %></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12 judo">
+						<% @favoriteartist.each do |f| %>
+							<div class="col-lg-3 artist-kki">
+								<%= link_to "/artists/#{f.artist.id}" do %>
+									<div class="col text-center">
+										<p class="text-center"><%= f.artist.name %></p><br>
+										<%= image_tag f.artist.image.variant(combine_options:{resize:"125x125^",crop:"125x125+0+0",gravity: :center}).processed %> 
+									</div>
+								<% end %>
+							</div>
 						<% end %>
 					</div>
 				</div>
-				<% end %>
-			</div>			
+			</div>
 		</div>
-    </div>
-
+		<div class="row">
+			<div class="col-lg-12 user-index">
+				<% @userfestivals.each do |festival| %>
+					<div class="col-lg-2 product-index">
+						<div class="col-lg-12">
+							<div class="col-lg-6 col-lg-offset-5">
+								<% if festival.user.id == current_user.id %>
+									<%= link_to "/festivals/#{festival.id}/edit" do %>
+										<p class="text-right"><i class="fas fa-edit"></i></p>
+									<% end %>
+								<% end %>
+							</div>
+						</div>						
+						<% if festival.images.attached? %>
+							<div class="col-lg-12">
+								<div class="slider1">
+									<% festival.images.each do |image| %> 
+										<div class="festival">
+											<%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center, border:'2', bordercolor:'#00CCCC'}).processed %>
+										</div>
+									<% end %>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<%= link_to "/festivals/#{festival.id}" do %>
+									<p class="text-center"><%= festival.name %></p>
+								<% end %>
+							</div>
+							<div class="col-lg-12">
+								<%= link_to "/festivals/#{festival.id}" do %>
+									<p class="text-center"><i class="fas fa-globe"></i><%= festival.adress %></p>
+								<% end %>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

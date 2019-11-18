@@ -1,3 +1,246 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul {
+  list-style: none;
+}
+
+.user-background-image {
+  background-image: url("edit.jpeg");
+  background-size: cover;
+  background-position: center;
+  margin-bottom: -30px;
+}
+
+
+#user_email, #user_password {
+    height: 35px;
+    width: 350px;
+  }
+
+.sign_in_field {
+    margin-top: 20px;
+  }
+  .sign-up-field {
+    margin-top: 15px;
+  }
+  
+  .sign_in_box {
+    margin-top: 50px;
+  }
+  .sign-in-button {
+    width: 350px;
+  }
+  .sign-in-info-sign-up {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  .sign-in-button {
+    width: 350px;
+  }
+  .sign-up-actions {
+    margin-top: 20px;
+  }
+  .sign-up-address-field {
+    width: 350px;
+    height: 35px;
+  }
+  .sign-up-label {
+    background-color: #999999;
+    color: #EEEEEE;
+    width: 160px;
+    text-align: center;
+    border-radius: 35px;
+  }
+
+  .favorite-artist {
+    margin: 60px 0 30px 0;
+  }
+
+  .festival img {
+    border-radius: 40px;
+    border: 3px solid rgb(150, 141, 141);
+  }
+
+  .artist img {
+    border-radius: 50%;
+    border: 3px solid rgb(150, 141, 141);
+  }
+
+  .product-index {
+    overflow: hidden;
+    transition-duration: 0.3s;
+    margin-bottom: 10px;
+  }
+  
+  .product-index:hover {
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+  }
+  
+
+  .user-name {
+    margin-top: 50px;
+    font-size: 25px;
+    border-bottom: 3px solid #000;
+  }
+
+  .user-index {
+    box-shadow:0px 0px 10px;
+    border: 1px solid #000;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    opacity: 0.9;
+  }
+
+  .user-index:hover {
+    opacity: 1;
+  }
+
+  .user-image img {
+    border-radius: 50%;
+    border: 3px solid rgb(150, 141, 141); 
+  }
+
+
+
+.user-image-box {
+  text-align: center;
+  margin-top: 75px;
+}
+
+.adress {
+  margin-top: 15px;
+}
+
+.festivalname {
+  text-align: center;
+}
+
+.favorote-index {
+  margin-bottom: 100px;
+}
+
+.favorite-name {
+  text-align: center;
+  font-size: 35px;
+  margin-top: 50px;
+}
+
+.user-edit {
+  margin-bottom: 20px;
+}
+
+.user-edit1 {
+  margin-bottom: 50px;
+}
+
+.user-adress {
+  margin-bottom: 20px;
+}
+
+.user-edit-image {
+  margin-bottom: 50px;
+}
+
+.user-introduction {
+  margin-top: 75px;
+}
+
+.cp_tag01 {
+  border: 1px solid rgb(150, 141, 141); 
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+
+.user-kita {
+  margin-top: 10px;
+  height: 100px
+}
+
+
+.user-edit-index {
+  box-shadow:0px 0px 10px;
+  border: 3px solid #000;
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  opacity: 0.8;
+}
+
+.user-edit-index:hover {
+  opacity: 1;
+}
+
+.user-box {
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+.user-box:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+
+
+
+.user-btn {
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+.user-btn:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+
+
+
+
+.artist-index {
+  margin-top: 50px;
+}
+
+.user-canabis {
+  font-size: 50px;
+}
+
+.artist-index-show {
+  margin-top: 50px;
+  margin-bottom: 15px;
+  
+}
+
+.favorite-artist-user {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #000;
+  margin-bottom: 50px;
+}
+
+
+
+
+.xxxtentaicion {
+  margin-bottom: 100px;
+  margin-top: 50px
+}
+
+.afrojack {
+  margin-top: 40px;
+  font-size: 40px;
+}
+
+.artist2 img {
+  border-radius: 50px;
+  border: 1px solid #BBB;
+}
+
+.artist-name {
+  margin-top: 30px;
+}

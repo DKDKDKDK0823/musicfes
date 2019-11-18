@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
+  before_action :baria_user, only: [:edit, :update]
+
   def show
     @user = User.find(params[:id])
     @userfestivals = @user.festivals
+    @favoriteartist = FavoriteArtist.where(user_id: @user.id)
+   
   end
 
   def edit
@@ -11,10 +15,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      redirect_to ("/users/#{current_user.id}")
       flash[:success] = "プロフィールの編集が完了しました。"
-      redirect_to ("/users/#{@user.id}")
     else
-      render :edit
+      render 'edit'
     end
   end
 
@@ -23,12 +27,11 @@ class UsersController < ApplicationController
     @favoritefestivals = FavoriteFestival.where(user_id: @user.id)
   end
 
-  def create
+  def favorite_artists
+    @user = User.find_by(id: params[:id])
+    @favoriteartist = FavoriteArtist.where(user_id: @user.id)
   end
 
-  def destroy
-    
-  end
 
 
   private
@@ -37,4 +40,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :introduction, :profile_image, :name)
   end
 
+  def baria_user
+      user = User.find(params[:id])
+    if user.id != current_user.id
+      redirect_to user_path(current_user.id)
+    end
+  end
 end
