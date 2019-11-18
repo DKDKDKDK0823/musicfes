@@ -8,6 +8,7 @@ class FavoriteFestivalsController < ApplicationController
     favorite.save
   end
 
+
   def unfavorite
     favorite = current_user.favorite_festivals.find_by(festival_id: @festival.id)
     favorite.destroy

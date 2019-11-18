@@ -22,7 +22,6 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require infinite-scroll.pkgd.min
-//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
 
  
@@ -58,11 +57,20 @@ $(document).on('turbolinks:load', function(){
   });
 
   $(document).on('turbolinks:load', function(){
+    $('.slider3').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: true,
+        dots: true,
+        arrows: false,
+      });
+  });
+
+  $(document).on('turbolinks:load', function(){
     $('.slider1').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
         infinite: true,
         dots: true,
         arrows: false,
@@ -85,4 +93,11 @@ $(document).on('turbolinks:load', function(){
         centerMode: true,
         focusOnSelect: true
       });
+});
+
+$(document).on('turbolinks:load', function(){
+    $("#Mottomiru").click(function(){
+      $("#rest-of-ranking").show();
+      $("#Mottomiru").hide();
+    });
 });

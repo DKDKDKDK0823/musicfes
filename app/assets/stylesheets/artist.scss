@@ -11,3 +11,68 @@
     border-radius: 40px;
     border: 1px solid #BBB;
 }
+
+.artist1 img {
+    border-radius: 35px;
+    border: 1px solid #BBB;
+}
+
+.artist {
+    text-align: center;
+    font-size: 40px;
+    border-bottom: 3px solid #000; 
+}
+
+
+
+.artist-name-show {
+    margin-bottom: 50px;
+}
+
+
+.artist-festival-show {
+    margin-bottom: 35px;
+}
+
+.artist-kki {
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+.artist-kki:hover {
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+}
+
+.artist-kki img {
+    border-radius: 50px;
+    border: 1px solid #BBB;
+}
+
+.artist-kkkkkk img {
+    border-radius: 30px;
+    border: 1px solid #BBB;
+}
+
+.judo {
+    margin-top: 75px;
+}
+
+.artist-index-show {
+    box-shadow:0px 0px 10px;
+    border: 3px solid #000;
+    background-color: white;
+    border-radius: 30px;
+    margin-bottom: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    opacity: 0.8;
+}
+
+.artist-index-show:hover {
+    opacity: 1;
+}
+
+.artist-image img {
+    margin: 0 auto;
+}

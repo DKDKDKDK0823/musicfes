@@ -1,0 +1,15 @@
+<div class="favorite-link" id="favorite-link-<%= artist.artist_id %>">
+  <% if user_signed_in? %>
+    <% if current_user.favorite_artists.find_by(artist_id: artist.artist_id) %> 
+      <%= link_to unfavorite1_path(current_user.favorite_artists.find_by(artist_id: artist.artist_id).id), method: :delete, remote: true do %>
+        <p><span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: red;"></span>
+      <% end %>
+    <% else %>
+      <%= link_to favorite1_path(artist.id), method: :post, remote: true do %>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+      <% end %>
+
+  <% end %>
+  <% end %>
+</div>
+

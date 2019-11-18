@@ -1,5 +1,7 @@
 class FestivalsController < ApplicationController
 
+  before_action :correct_user, only:[:edit, :update]
+
   def index
     @festival = Festival.all.page(params[:page]).per(6)
     if @searched_festivals
@@ -17,7 +19,7 @@ class FestivalsController < ApplicationController
 
 
   def show
-    @festival = Festival.find(params[:id])   
+    @festival = Festival.find(params[:id]) 
     @festivaluser = @festival.user
     @fes_artists = @festival.fes_artists
   end
@@ -26,14 +28,23 @@ class FestivalsController < ApplicationController
   def new
     @artists = Artist.all
     @festival = Festival.new
+    @user = User.find(current_user.id)
     @festival.fes_artists.build
   end
 
   def create
     @festival = Festival.new(festival_params)
     @festival.user_id = current_user.id
-    @festival.save
-    redirect_to festivals_path
+    if @festival.save
+      redirect_to festivals_path
+      flash[:notice] = "投稿完了"
+    else
+      @artists = Artist.all
+      @user = User.find(current_user.id)
+      @festival.fes_artists.build
+      render 'new'
+    end
+    
   end
 
 
@@ -45,7 +56,12 @@ class FestivalsController < ApplicationController
 
   def update
     @festival = Festival.find(params[:id])
-
+    if params[:festival][:image_ids]
+      params[:festival][:image_ids].each do |image_id|
+        image = @festival.images.find(image_id)
+        image.purge
+      end
+    end
     if @festival.update(festival_params)
       flash[:success] = "編集完了"
       redirect_to ("/festivals/#{@festival.id}")
@@ -59,7 +75,7 @@ class FestivalsController < ApplicationController
     @festival = Festival.find(params[:id])
     if @festival.destroy
       flash[:notice] = "destroy successfully"
-      redirect_to ("/festivals")
+      redirect_to ("/users/#{current_user.id}")
     else
       render :edit
     end
@@ -75,6 +91,12 @@ class FestivalsController < ApplicationController
     params.require(:festival).permit(:name)
   end
 
+  def correct_user
+  	festival = Festival.find(params[:id])
+  	if current_user != festival.user
+  		redirect_to ("/festivals/#{festival.id}")
+  	end
+  end
 
    
 end

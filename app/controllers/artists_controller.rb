@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    @artist = FesArtist.find(params[:id])  
+    @artist = Artist.find(params[:id])  
     @artistfestivals = FesArtist.where(artist_id: @artist)
   end
 

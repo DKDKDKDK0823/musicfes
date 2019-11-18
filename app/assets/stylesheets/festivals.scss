@@ -23,15 +23,153 @@ ul {
 }
 
 
+.mx-auto {
+  position: absolute;
+  margin: 0 auto;
+}
+
 .showtime {
   margin-bottom: 50px;
 }
 
-.artist img {
-  border-radius: 40px;
-  border: 1px solid #BBB;
-}
 
 .show-art {
   margin-bottom: 15px;
+}
+
+.festival-show {
+  margin-top: 50px;
+}
+
+.festival-index-show {
+  opacity: 0.8;
+  box-shadow:0px 0px 10px;
+  border: 3px solid #000;
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.festival-index-show {
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+.festival-index-show:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+  opacity: 1;
+}
+
+.festival-favorite {
+  margin-top: 15px;
+  float: right;
+}
+
+.check-box {
+  margin-right: 20px;
+}
+
+.paginete  {
+  text-align: center;
+}
+
+.user-name {
+  text-align: center;
+}
+
+.festival-boder {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.diplo {
+  font-size: 15px;
+}
+
+.festival-index-show1 {
+  box-shadow:0px 0px 10px;
+  border: 3px solid #000;
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  opacity: 0.8;
+}
+
+.user-festival-show  {
+  margin-top: 100px;
+}
+
+.festival-index-show1:hover {
+  opacity: 1;
+}
+
+.festival-boder1 {
+  margin-bottom: 30px;
+  border-bottom: 3px solid #000;
+  padding-bottom: 5px;
+}
+
+.fes-artist {
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+.fes-artist:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+} 
+
+.click {
+  font-size: 30px;
+}
+
+.click1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.kygo {
+  font-size: 25px;
+}
+
+.festival-new {
+  margin-bottom: 30px;
+}
+
+.daiki {
+  box-shadow:0px 0px 10px;
+  margin: 2em 0;
+  font-weight: bold;
+  color: black;/*文字色*/
+  background: #FFF;
+  border: solid 1px black;/*線*/
+  border-radius: 10px;/*角の丸み*/
+  padding: 30px 30px 30px 30px;
+}
+
+.text-index {
+  display: inline-block;
+}
+
+.user-index1 {
+  margin-bottom: 10px;
+}
+
+.wraning {
+  margin-top: 100px;
+}
+
+.destory-btn {
+  margin-top: 20px;
+}
+
+.artist-festival img {
+  border-radius: 50%;
+  border: 1px solid #BBB;
 }

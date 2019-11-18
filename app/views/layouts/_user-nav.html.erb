@@ -9,12 +9,13 @@
         <% if user_signed_in? %>
         <li><%= link_to '・トップページ', "/festivals" %></li>
         <li><%= link_to '・マイページ', "/users/#{current_user.id}" %></li>
-        <li><%= link_to '★アーティスト一覧', "/favorite_artists/index" %></li>
-        <li><%= link_to '♡フェス一覧', "/users/#{current_user.id}/favorite_festtivals" %></li>
-        <span data-turbolinks="false">
-            <li><%=  link_to '地図でみる', "/map"  %></li>
-        </span>
+        <li><%= link_to "・マイページ編集", "/users/#{current_user.id}/edit" %></li>
         <li><%= link_to '・新規投稿', "/festivals/new" %></li>
+        <span data-turbolinks="false">
+            <li><%=  link_to '・地図でみる', "/map"  %></li>
+        </span>
+        <li><%= link_to '★アーティスト一覧', "/users/#{current_user.id}/favorite_artists" %></li>
+        <li><%= link_to '♡フェス一覧', "/users/#{current_user.id}/favorite_festtivals" %></li>
         <li><%= link_to '・ログアウト', "/users/sign_out", method: :delete %></li>
         <% else %>
          <li><%= link_to 'トップページ', "/festivals" %></li>

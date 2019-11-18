@@ -1,27 +1,130 @@
 <div id="wrapper">
     <%= render 'layouts/user-nav' %>
 </div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-xs-6 col-lg-offset-3">
-        <%= form_for @user, url: "/users/#{@user.id}" do |f| %>
-        <h1>編集だよ〜</h1>
-            <table class="table">
-                <tbody>
-                    <tr><th>(姓)</th><th> <%= f.text_field :last_name, class: "form-control" %> </th></tr>
-                    <tr><th>(名)</th><th> <%= f.text_field :first_name, class: "form-control" %> </th></tr>
-                    <tr><th>カナ(姓)</th><th> <%= f.text_field :last_name_kana, class: "form-control" %> </th></tr>
-                    <tr><th>カナ(名)</th><th> <%= f.text_field :first_name_kana, class: "form-control" %> </th></tr>
-                    <tr><th>住所</th><th><%= f.text_field :adress, class: "form-control" %></th></tr>
-                    <tr><th>メールアドレス</th><th><%= f.text_field :email, class: "form-control" %></th></tr>
-                    <tr><th>ユーザー名</th><th><%= f.text_field :name, class: "form-control" %></th></tr>
-                    <tr><th>自己紹介文</th><th><%= f.text_area :introduction, class: "form-control" %></th></tr>
-                    <tr><th>画像</th><th><%= f.attachment_field :profile_image, class: "form-control" %></th></tr>
-                    <tr><th></th><th><%= f.submit '更新',  class: "btn-flat-border btn-block" %></th></tr>
-                </tbody>
-            </table>
-        <% end %>
+<%= render 'layouts/top-nav' %>
+<div class="jumbotron user-background-image">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 user-edit-index">
+                <div class="col-xs-10 col-lg-offset-2  user-edit-image">
+                    <div class="col-lg-5 col-lg-offset-2 ">
+                        <div class="col text-center">
+                            <div class="artist-kkkkkk">
+                                <%= attachment_image_tag  @user, :profile_image, :fill, 250, 250, format: 'jpeg',fallback: 'no_image.png', size: "250x250", class: 'user-image' %>
+                            </div>
+                        </div>
+                        <%= form_for @user, url: "/users/#{@user.id}" do |f| %>
+                            <%= f.attachment_field :profile_image, class: "form-control" %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="col-xs-10 col-lg-offset-1  user-edit">
+                    <%= form_for @user, url: "/users/#{@user.id}" do |f| %>
+                        <%= render "/error_messages", model: f.object %>
+                        <div class="col-lg-6">
+                            <div class="col text-right">
+                                <div class="col-lg-3">
+                                    <p>(姓)</p>
+                                </div>
+                                <div class="col-lg-7 user-box">
+                                    <%= f.text_field :last_name, class: "form-control" %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="col text-right">
+                                <div class="col-lg-3">
+                                    <p>(名)</p>
+                                </div>
+                                <div class="col-lg-7 user-box">
+                                    <%= f.text_field :first_name, class: "form-control" %> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="col text-right">
+                                <div class="col-lg-3">
+                                    <p>(セイ)</p>
+                                </div>
+                                <div class="col-lg-7 user-box">
+                                    <%= f.text_field :last_name_kana, class: "form-control" %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="col text-right">
+                                <div class="col-lg-3">
+                                    <p>(メイ)</p>
+                                </div>
+                                <div class="col-lg-7 user-box">
+                                    <%= f.text_field :first_name_kana, class: "form-control" %>
+                                </div>
+                            </div>
+                        </div>                    
+                        <div class="col-lg-5 col-lg-offset-1 user-adress">
+                            <div class="col text-left">
+                                <div class="col-lg-8 col-lg-offset-1">
+                                    <div class="col-lg-6 cp_tag01">
+                                        <p class="text-center">住所</p>
+                                    </div>        
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-lg-offset-1">
+                                <div class="user-box">
+                                    <%= f.text_field :adress, class: "form-control" %> 
+                                </div>              
+                            </div>
+                        </div>
+                        <div class="col-lg-5 user-adress">
+                            <div class="col text-left">
+                                <div class="col-lg-8 col-lg-offset-1">
+                                    <div class="col-lg-8 cp_tag01">
+                                        <p class="text-center">ユーザー名</p>
+                                    </div>        
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-lg-offset-1">
+                                <div class="user-box">
+                                    <%= f.text_field :name, class: "form-control" %>
+                                </div>              
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-lg-offset-1 user-adress">
+                            <div class="col text-left">
+                                <div class="col-lg-8 col-lg-offset-1">
+                                    <div class="col-lg-4 cp_tag01">
+                                        <p class="text-center">email</p>
+                                    </div>        
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-lg-offset-1">
+                                <div class="user-box">
+                                    <%= f.text_field :email, class: "form-control" %> 
+                                </div>              
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-lg-offset-1 user-adress">
+                            <div class="col text-left">
+                                <div class="col-lg-8 col-lg-offset-1">
+                                    <div class="col-lg-6 cp_tag01">
+                                        <p class="text-center">自己紹介文</p>
+                                    </div>        
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-lg-offset-1">
+                                <div class="user-box">
+                                    <%= f.text_area :introduction, class: "form-control" %>
+                                </div>              
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="col-lg-6 col-lg-offset-3 user-btn">
+                                <%= f.submit '更新', class: "btn btn-warning btn-block" %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div> 
+            </div>
         </div>
     </div>
 </div>
