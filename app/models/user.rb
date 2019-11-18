@@ -16,8 +16,6 @@ class User < ApplicationRecord
          validates :last_name_kana, presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
          validates :first_name_kana, presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
          validates :email, presence: true
-         validates :introduction, presence: true
-         validates :name, presence: true
          validates :adress, presence: true
          has_many :favorite_festivals, dependent: :destroy
          has_many :favorite_artists, dependent: :destroy
