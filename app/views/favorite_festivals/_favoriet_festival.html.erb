@@ -5,7 +5,7 @@
         <%= festival.favorite_festivals.size %> いいね</p>
       <% end %>
     <% else %>
-      <%= link_to favorite_path(festival.id), method: :post, remote: true do %>
+      <p><%= link_to favorite_path(festival.id), method: :post, remote: true do %>
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
         <%= festival.favorite_festivals.size %> いいね</p>
       <% end %>

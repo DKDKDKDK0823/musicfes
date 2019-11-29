@@ -1,85 +1,91 @@
-<div id="wrapper">
-    <%= render 'layouts/user-nav' %>
-</div>
-<%= render 'layouts/top-nav' %>
-<div class="jumbotron background-image1">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 festival-index-show">
-                <%= form_with model: @festival, url: "/festivals/#{@festival.id}" , local: true do |f| %>
-                    <div class="col-lg-12">
-                        <% @festival.images.each do |image| %>
-                            <div class="col-lg-3">
-                                <span><%= f.check_box :image_ids, {:multiple => true}, image.id, false %></span>
-                                <%= image_tag image, :size=>"300x300" %>
+<div class="wrap">
+    <div id="wrapper">
+        <%= render 'layouts/user-nav' %>
+    </div>
+    <%= render 'layouts/top-nav' %>
+    <div class="jumbotron background-image1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 festival-index-show">
+                    <%= form_with model: @festival, url: "/festivals/#{@festival.id}" , local: true do |f| %>
+                        <div class="col-lg-12">
+                            <% @festival.images.each do |image| %>
+                                <div class="col-lg-3">
+                                    <span><%= f.check_box :image_ids, {:multiple => true}, image.id, false %></span>
+                                    <%= image_tag image, :size=>"300x300" %>
+                                </div>
+                            <% end %>
+                            <div class="col-lg-12 wraning">
+                                <p class="text-center"><i class="fas fa-dot-circle"></i>ボックスに<i class="fas fa-check"></i>を着けて更新すると削除されます<i class="fas fa-dot-circle"></i></p>
                             </div>
-                        <% end %>
-                        <div class="col-lg-12 wraning">
-                            <p class="text-center"><i class="fas fa-dot-circle"></i>ボックスに<i class="fas fa-check"></i>を着けて更新すると削除されます<i class="fas fa-dot-circle"></i></p>
-                        </div>
-                    </div>             
-                    <div class="col-xs-10 col-lg-offset-1 sign_in_box">                   
-                        <div class="sign-up-field">
-                            <div class="col-lg-6 festival-new">
-                                <%= f.label :'名前', class: "sign-up-label"  %>
-                                <%= f.text_field :name, class: "form-control" %> 
+                        </div>             
+                        <div class="col-xs-10 col-lg-offset-1 sign_in_box">                   
+                            <div class="sign-up-field">
+                                <div class="col-lg-6 festival-new">
+                                    <%= f.label :'名前', class: "sign-up-label"  %>
+                                    <%= f.text_field :name, class: "form-control" %> 
+                                </div>
                             </div>
-                        </div>
-                        <div class="sign-up-field">
-                            <div class="col-lg-6 festival-new">
-                                <%= f.label :'値段', class: "sign-up-label"  %>
-                                <%= f.text_field :price, class: "form-control" %> 
+                            <div class="sign-up-field">
+                                <div class="col-lg-6 festival-new">
+                                    <%= f.label :'値段', class: "sign-up-label"  %>
+                                    <%= f.text_field :price, class: "form-control" %> 
+                                </div>
                             </div>
-                        </div>
-                        <div class="sign-up-field">
-                            <div class="col-lg-6 festival-new">
-                                <%= f.label :'開催地域', class: "sign-up-label"  %>
-                                <%= f.text_field :adress, class: "form-control" %>
+                            <div class="sign-up-field">
+                                <div class="col-lg-6 festival-new">
+                                    <%= f.label :'開催地域', class: "sign-up-label"  %>
+                                    <%= f.text_field :adress, class: "form-control" %>
+                                </div>
                             </div>
-                        </div>
-                        <div class="sign-up-field">
-                            <div class="col-lg-6 festival-new">
-                                <%= f.label :'ジャンル', class: "sign-up-label"  %>
-                                <%= f.text_field :genre, class: "form-control" %>
+                            <div class="sign-up-field">
+                                <div class="col-lg-6 festival-new">
+                                    <%= f.label :'ジャンル', class: "sign-up-label"  %>
+                                    <%= f.text_field :genre, class: "form-control" %>
+                                </div>
                             </div>
-                        </div>
-                        <div class="sign-up-field">
-                            <div class="col-lg-6 festival-new">
-                                <%= f.label :'開催日', class: "sign-up-label"  %>
-                                <%= f.date_field :day, class: "form-control" %>
+                            <div class="sign-up-field">
+                                <div class="col-lg-6 festival-new">
+                                    <%= f.label :'開催日', class: "sign-up-label"  %>
+                                    <%= f.date_field :day, class: "form-control" %>
+                                </div>
                             </div>
-                        </div>
-                        <div class="sign-up-field">
-                            <div class="col-lg-6 festival-new">
-                                <%= f.file_field :images, multiple: true %>
+                            <div class="sign-up-field">
+                                <div class="col-lg-6 festival-new">
+                                    <%= f.file_field :images, multiple: true %>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-12 col text-center">
-                            <div class="field">
-                            <%= f.fields_for :fes_artists do |fin| %>
-                                    <%= render 'fes_artist_fields', f: fin %>
-                                <% end %>
-                                <%= link_to_add_association '追加する', f, :fes_artists, data: { association_insertion_method: 'before' },class: "btn-square-shadow" %>
-                                <%= link_to "アーティスト登録", "/artists/new", class: "btn btn-primary" %>
+                            <div class="col-xs-12 col text-center">
+                                <div class="field">
+                                <%= f.fields_for :fes_artists do |fin| %>
+                                        <%= render 'fes_artist_fields', f: fin %>
+                                    <% end %>
+                                    <%= link_to_add_association '追加する', f, :fes_artists, data: { association_insertion_method: 'before' },class: "btn-square-shadow" %>
+                                    <%= link_to "アーティスト登録", "/artists/new", class: "btn btn-primary" %>
+                                </div>
                             </div>
-                        </div>
-                        <div class="sign-up-actions">
-                            <div class="col-xs-6 col-lg-offset-3">
-                                <%= f.submit "更新", class: "btn btn-primary sign-in-button" %>
-                            </div>
-                            <div class="col-lg-4 col-lg-offset-4 destory-btn">
-                                <div class="col text-center">
-                                    <p><i class="fas fa-dot-circle"></i>投稿削除ボタン<i class="fas fa-dot-circle"></i></p>
-                                    <%= link_to "Destroy", festival_path(@festival), method: :delete, class: "btn btn-danger btn-block btn-xs destroy_festival_#{@festival.id}", "data-confirm" => "Are you Sure?" %>
+                            <div class="sign-up-actions">
+                                <div class="col-xs-6 col-lg-offset-3">
+                                    <%= f.submit "更新", class: "btn btn-primary sign-in-button" %>
+                                </div>
+                                <div class="col-lg-4 col-lg-offset-4 destory-btn">
+                                    <div class="col text-center">
+                                        <p><i class="fas fa-dot-circle"></i>投稿削除ボタン<i class="fas fa-dot-circle"></i></p>
+                                        <%= link_to "Destroy", festival_path(@festival), method: :delete, class: "btn btn-danger btn-block btn-xs destroy_festival_#{@festival.id}", "data-confirm" => "Are you Sure?" %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <% end %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
+<script>
+Pace.on('done', function(){
+    $('.wrap').fadeIn();
+});
+</script>
 
 
