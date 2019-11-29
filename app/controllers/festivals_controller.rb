@@ -9,7 +9,6 @@ class FestivalsController < ApplicationController
     else
       @festivals = Festival.where(is_deleted: ["false"]).page(params[:page]).reverse_order
     end
-    @festival = Festival.all.page(params[:page]).per(6)
   end
 
   def search

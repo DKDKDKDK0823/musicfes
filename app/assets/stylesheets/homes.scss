@@ -4,14 +4,12 @@
 
 
 
-
 .top-contents {
-  margin-top: 150px;
   text-align: center;
 }
 
 .home-text {
-    font-size: 100px;
+    font-size: 150px;
     text-align: center;
     opacity: 0.7;
     color: white;
@@ -30,27 +28,35 @@
 #skippr-container{
 	height: 800px;
   }
+
   .image1{
   background-image: url(/images/home-top.jpeg);
-  position: relative;
-  
-  }
-  .image2{
-  background-image: url(/images/skipper2.jpeg);
   background-position: center;
   position: relative;
-  }
-  .image3{
-  background-image: url(/images/skipper3.jpeg);
-  background-position: center;
-  position: relative;
+  background-size: cover;
+  height: 100vh;
   }
 
-  .image4{
-	background-image: url(/images/skipper1.jpeg);
-	background-position: center;
-	position: relative;
+  .home-contents {
+    padding-top: 150px;
   }
+
+  // .image2{
+  // background-image: url(/images/skipper2.jpeg);
+  // background-position: center;
+  // position: relative;
+  // }
+  // .image3{
+  // background-image: url(/images/skipper3.jpeg);
+  // background-position: center;
+  // position: relative;
+  // }
+
+  // .image4{
+	// bakground-image: url(/images/skipper1.jpeg);
+	// background-position: center;
+	// position: relative;
+  // }
 
   .map-index {
     box-shadow:0px 0px 10px;

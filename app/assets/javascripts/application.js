@@ -21,8 +21,8 @@
 //= require uikit-icons.min
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require infinite-scroll.pkgd.min
-//= require_tree .
+//= require_tree ../../../vendor/assets/javascripts/.
+//= require_directory .
 
  
 
@@ -67,6 +67,7 @@ $(document).on('turbolinks:load', function(){
       });
   });
 
+
   $(document).on('turbolinks:load', function(){
     $('.slider1').slick({
         slidesToShow: 1,
@@ -94,6 +95,20 @@ $(document).on('turbolinks:load', function(){
         focusOnSelect: true
       });
 });
+$(document).on('turbolinls:load', function(){
+  $("home-text").textillate({
+       loop: true,
+       in: {
+           effect: 'fadeInDown',
+           delay: 50,
+           shuffle: true
+       } ,
+       out: {
+           effect: 'flash',
+           delay: 50
+       }
+  }); 
+});
 
 $(document).on('turbolinks:load', function(){
     $("#Mottomiru").click(function(){
@@ -101,3 +116,5 @@ $(document).on('turbolinks:load', function(){
       $("#Mottomiru").hide();
     });
 });
+
+

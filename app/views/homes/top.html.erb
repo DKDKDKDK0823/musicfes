@@ -1,12 +1,10 @@
 <div id="wrapper">
     <%= render 'layouts/user-nav' %>
 </div>
-
-<div id="skippr-container">
-  <div id="theTarget">
-    <div class="image1">
+<div class="image1">
+    <div class="home-contents">
         <div class="top-contents">
-            <h1 class="home-text">MUSIC  FESTIVA IS LIFE</h1>
+            <h1 class="home-text">MUSICFES.LIFE</h1>
         </div>
         <div class="home-btn">
             <%= link_to "/festivals" do %>
@@ -17,44 +15,15 @@
             <% end %>
         </div>
     </div>
-    <div class="image2">
-        <div class="top-contents">
-            <h1 class="home-text">MUSIC  FESTIVA IS LIFE</h1>
-        </div>
-        <div class="home-btn">
-            <%= link_to "/festivals" do %>
-                <p class="btnText">READY?</p>
-                <div class="btnTwo">
-                    <p class="btnText2">GO!</p>
-                </div>
-            <% end %>
-        </div>
-    </div>
-    <div class="image3">
-        <div class="top-contents">
-            <h1 class="home-text"> MUSIC  FESTIVA IS LIFE</h1>
-        </div>
-        <div class="home-btn">
-            <%= link_to "/festivals" do %>
-                <p class="btnText">READY?</p>
-                <div class="btnTwo">
-                    <p class="btnText2">GO!</p>
-                </div>
-            <% end %>
-        </div>
-    </div>
-    <div class="image4">
-        <div class="top-contents">
-            <h1 class="home-text"> MUSIC  FESTIVA IS LIFE</h1>
-        </div>
-        <div class="home-btn">
-            <%= link_to "/festivals" do %>
-                <p class="btnText">READY?</p>
-                <div class="btnTwo">
-                <p class="btnText2">GO!</p>
-                </div>
-            <% end %>
-        </div>
-    </div>
-  </div>
 </div>
+<script>
+$(function() {
+    $(".home-text").textillate({
+        in: {
+            effect: 'rotateIn',
+            delay: 50,
+            shuffle: true
+        }
+    });
+});
+</script>

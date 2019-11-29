@@ -13,10 +13,12 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
+ *= require_tree ../../../vendor/assets/stylesheets/.
+ *= require_tree
  */
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 @import "slick-theme"; 
 @import "slick";
@@ -91,7 +93,6 @@ a:hover {
 
 .background-image1 {
   background-image: url(/images/images/background-image.jpeg);
-  // background-image: url(/images/home-top.jpeg);
   background-size: cover;
   background-position: center;
   margin-bottom: -30px;
