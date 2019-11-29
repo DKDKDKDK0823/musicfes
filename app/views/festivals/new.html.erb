@@ -1,80 +1,87 @@
-<div id="wrapper">
-    <%= render 'layouts/user-nav' %>
-</div>
-<%= render 'layouts/top-nav' %>
-<div class="jumbotron background-image1">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="col-lg-12">
-                    <%= attachment_image_tag  @user, :profile_image, :fill, 250, 250, format: 'jpeg',fallback: 'no_image.png', size: "250x250", class: 'user-image' %>
+<div class="wrap">
+    <div id="wrapper">
+        <%= render 'layouts/user-nav' %>
+    </div>
+    <%= render 'layouts/top-nav' %>
+    <div class="jumbotron background-image1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="col-lg-12">
+                        <%= attachment_image_tag  @user, :profile_image, :fill, 250, 250, format: 'jpeg',fallback: 'no_image.png', size: "250x250", class: 'user-image' %>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-9 col-lg-offset-1 festival-index-show">
-                <div class="row">
-                    <%= form_for(@festival) do |f| %>
-                        <%= render "/error_messages", model: f.object %>
-                        <div class="col-xs-10 col-lg-offset-1 sign_in_box">
-                            <div class="sign-up-field">
-                                <div class="col-lg-6 festival-new">
-                                    <%= f.label :'名前', class: "sign-up-label"  %>
-                                    <%= f.text_field :name, class: "form-control" %>
+                <div class="col-lg-9 col-lg-offset-1 festival-index-show">
+                    <div class="row">
+                        <%= form_for(@festival) do |f| %>
+                            <%= render "/error_messages", model: f.object %>
+                            <div class="col-xs-10 col-lg-offset-1 sign_in_box">
+                                <div class="sign-up-field">
+                                    <div class="col-lg-6 festival-new">
+                                        <%= f.label :'名前', class: "sign-up-label"  %>
+                                        <%= f.text_field :name, class: "form-control" %>
+                                    </div>
                                 </div>
+                                <div class="sign-up-field">
+                                    <div class="col-lg-6 festival-new">
+                                        <%= f.label :'値段', class: "sign-up-label"  %>
+                                        <%= f.text_field :price, class: "form-control" %>
+                                    </div>
+                                </div>
+                                <div class="sign-up-field">
+                                    <div class="col-lg-6 festival-new">
+                                        <%= f.label :'開催地域', class: "sign-up-label"  %>
+                                        <%= f.text_field :adress, class: "form-control" %>
+                                    </div>
+                                </div>
+                                <div class="sign-up-field">
+                                    <div class="col-lg-6 festival-new">
+                                        <%= f.label :'ジャンル', class: "sign-up-label"  %>
+                                        <%= f.text_field :genre, class: "form-control" %>
+                                    </div>
+                                </div>
+                                <div class="sign-up-field">
+                                    <div class="col-lg-6 festival-new">
+                                        <%= f.label :'開催日', class: "sign-up-label"  %>
+                                        <%= f.date_field :day, class: "form-control" %>
+                                    </div>
+                                </div>
+                                <div class="sign-up-field">
+                                    <div class="col-lg-6 festival-new">
+                                        <p class="text-center">画像は最大4枚までです</p>
+                                        <%= f.file_field :images, multiple: true %>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col text-center">
+                                    <div class="field">
+                                        <%= f.fields_for :fes_artists do |fin| %>
+                                            <%= render 'fes_artist_fields', f: fin %>
+                                        <% end %>
+                                        <%= link_to_add_association '追加する', f, :fes_artists, data: { association_insertion_method: 'before' },class: "btn-square-shadow" %>
+                                        <%= link_to "アーティスト登録", "/artists/new", class: "btn btn-primary" %>
+                                    </div>
+                                </div>
+                                <div classs="col-lg-10">
+                                    <div class="col-lg-12 festival-new">
+                                        <%= f.label :'コメント', class: "sign-up-label"  %>
+                                        <%= f.text_area :introduction, class: "form-control" %>
+                                    </div>
+                                </div>
+                                <div class="sign-up-actions">
+                                    <div class="col-xs-6 col-lg-offset-3">
+                                        <%= f.submit "新規登録", class: "btn btn-primary sign-in-button" %>
+                                    </div>
+                                </div>                   
                             </div>
-                            <div class="sign-up-field">
-                                <div class="col-lg-6 festival-new">
-                                    <%= f.label :'値段', class: "sign-up-label"  %>
-                                    <%= f.text_field :price, class: "form-control" %>
-                                </div>
-                            </div>
-                            <div class="sign-up-field">
-                                <div class="col-lg-6 festival-new">
-                                    <%= f.label :'開催地域', class: "sign-up-label"  %>
-                                    <%= f.text_field :adress, class: "form-control" %>
-                                </div>
-                            </div>
-                            <div class="sign-up-field">
-                                <div class="col-lg-6 festival-new">
-                                    <%= f.label :'ジャンル', class: "sign-up-label"  %>
-                                    <%= f.text_field :genre, class: "form-control" %>
-                                </div>
-                            </div>
-                            <div class="sign-up-field">
-                                <div class="col-lg-6 festival-new">
-                                    <%= f.label :'開催日', class: "sign-up-label"  %>
-                                    <%= f.date_field :day, class: "form-control" %>
-                                </div>
-                            </div>
-                            <div class="sign-up-field">
-                                <div class="col-lg-6 festival-new">
-                                    <p class="text-center">画像は最大4枚までです</p>
-                                    <%= f.file_field :images, multiple: true %>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col text-center">
-                                <div class="field">
-                                    <%= f.fields_for :fes_artists do |fin| %>
-                                        <%= render 'fes_artist_fields', f: fin %>
-                                    <% end %>
-                                    <%= link_to_add_association '追加する', f, :fes_artists, data: { association_insertion_method: 'before' },class: "btn-square-shadow" %>
-                                    <%= link_to "アーティスト登録", "/artists/new", class: "btn btn-primary" %>
-                                </div>
-                            </div>
-                            <div classs="col-lg-10">
-                                <div class="col-lg-12 festival-new">
-                                    <%= f.label :'コメント', class: "sign-up-label"  %>
-                                    <%= f.text_area :introduction, class: "form-control" %>
-                                </div>
-                            </div>
-                            <div class="sign-up-actions">
-                                <div class="col-xs-6 col-lg-offset-3">
-                                    <%= f.submit "新規登録", class: "btn btn-primary sign-in-button" %>
-                                </div>
-                            </div>                   
-                        </div>
-                    <% end %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+Pace.on('done', function(){
+    $('.wrap').fadeIn();
+});
+</script>

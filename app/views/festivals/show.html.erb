@@ -1,122 +1,126 @@
-<div id="wrapper">
-    <%= render 'layouts/user-nav' %>
-</div>
-<%= render 'layouts/top-nav' %>
-<div class="jumbotron background-image1">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="col-lg-12 festival-index-show1">
-                    <div class="col-lg-6 user-festival-show">
-                        <div class="col-lg-12 click1">
-                            <%= link_to "/users/#{@festival.user.id}" do %> 
-                                <div class="col-lg-7">
-                                    <h3 class="text-center"><%= @festivaluser.name %><i class="fas fa-frog"></i></h3>
-                                </div>
-                                <div class="col-lg-4">
-                                    <%= attachment_image_tag  @festival.user, :profile_image, :fill, 75, 75, format: 'jpeg',fallback: 'no_image.png', size: "75x75", class: 'user-image' %>
-                                </div>
-                            <% end %>
-                        </div>
-                        <div class="col-lg-12">
-                            <% if @festival.images.attached? %>   
-                                <div class="slider-show">
-                                    <% @festival.images.each do |image| %>
-                                        <div class="festival">
-                                            <%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center}).processed %>
-                                        </div>
-                                    <% end %>
-                                </div>
-                            <% end %>
-                            <div class="col-lg-12">
-                                <% if @festival.images.attached? %>  
-                                    <div class="slider-nav">
-                                        <% @festival.images.each do |image| %>
-                                            <div><%= image_tag image.variant(combine_options:{resize:"100x100^",crop:"100x100+0+0",gravity: :center}).processed %></div>
-                                        <% end %>
+<div class="wrap">
+    <div id="wrapper">
+        <%= render 'layouts/user-nav' %>
+    </div>
+    <%= render 'layouts/top-nav' %>
+    <div class="jumbotron background-image1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-12 festival-index-show1">
+                        <div class="col-lg-6 user-festival-show">
+                            <div class="col-lg-12 click1">
+                                <%= link_to "/users/#{@festival.user.id}" do %> 
+                                    <div class="col-lg-7">
+                                        <h3 class="text-center"><%= @festivaluser.name %><i class="fas fa-frog"></i></h3>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <%= attachment_image_tag  @festival.user, :profile_image, :fill, 75, 75, format: 'jpeg',fallback: 'no_image.png', size: "75x75", class: 'user-image' %>
                                     </div>
                                 <% end %>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 daiki">
-                        <p class="text-left"><i class="fas fa-quote-left"></i></i></p>
-                        <div class="col-lg-12 festival-boder1">
-                            <div class="col-lg-4">
-                                <p class="text-center"><i class="fas fa-dot-circle"></i>名前</p>
-                            </div>
-                            <div class="col-lg-8 kygo">
-                                <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.name %></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 festival-boder1">
-                            <div class="col-lg-4">
-                                <p class="text-center"><i class="fas fa-dot-circle"></i>値段</p>
-                            </div>
-                            <div class="col-lg-8 kygo">
-                                <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.price %></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 festival-boder1">
-                            <div class="col-lg-4">
-                                <p class="text-center"><i class="fas fa-dot-circle"></i>ジャンル</p>
-                            </div>
-                            <div class="col-lg-8 kygo">
-                                <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.genre %></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 festival-boder1">
-                            <div class="col-lg-4">
-                                <p class="text-center"><i class="fas fa-dot-circle"></i>開催日</p>
-                            </div>
-                            <div class="col-lg-8 kygo">
-                                <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.day %></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 festival-boder1">
-                            <div class="col-lg-4">
-                                <p class="text-center"><i class="fas fa-dot-circle"></i>開催地域</p>
-                            </div>
-                            <div class="col-lg-8 kygo">
-                                <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.adress %></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 festival-boder1">
                             <div class="col-lg-12">
-                                <input id="address" type="textbox" value="Sydney, NSW">
-                                <input type="button" value="Encode" onclick="codeAddress()">
-                                <div id='map'></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 festival-boder1">
-                            <div class="col-lg-4">
-                                <p class="text-center"><i class="fas fa-dot-circle"></i>コメント</p>
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.introduction %></p>
-                            </div>
-                        </div>
-                        <p class="text-right"><i class="fas fa-quote-right"></i></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-12 click">
-                    <p class="text-center">出演アーティスト<i class="fas fa-check-circle"></i></p>
-                </div>
-                <% @fes_artists.each do |f| %>
-                    <div class="col-xs-3 fes-artist">
-                        <%= link_to "/artists/#{f.artist_id}" do %>
-                            <% if f.artist.image.attached? %>
-                                <div class="artist-festival">
-                                    <%= image_tag f.artist.image.variant(combine_options:{resize:"150x150^",crop:"150x150+0+0",gravity: :center}).processed %> <br>
+                                <% if @festival.images.attached? %>   
+                                    <div class="slider-show">
+                                        <% @festival.images.each do |image| %>
+                                            <div class="festival">
+                                                <%= image_tag image.variant(combine_options:{resize:"300x300^",crop:"300x300+0+0",gravity: :center}).processed %>
+                                            </div>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                                <div class="col-lg-12">
+                                    <% if @festival.images.attached? %>  
+                                        <div class="slider-nav">
+                                            <% @festival.images.each do |image| %>
+                                                <div><%= image_tag image.variant(combine_options:{resize:"100x100^",crop:"100x100+0+0",gravity: :center}).processed %></div>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
                                 </div>
-                            <% end %>
-                            <p class=text-center><%= f.artist.name %></p>
-                            <%= render 'festivals/favorite_artists', artist: f %>
-                        <% end %>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 daiki">
+                            <p class="text-left"><i class="fas fa-quote-left"></i></i></p>
+                            <div class="col-lg-12 festival-boder1">
+                                <div class="col-lg-4">
+                                    <p class="text-center"><i class="fas fa-dot-circle"></i>名前</p>
+                                </div>
+                                <div class="col-lg-8 kygo">
+                                    <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.name %></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 festival-boder1">
+                                <div class="col-lg-4">
+                                    <p class="text-center"><i class="fas fa-dot-circle"></i>値段</p>
+                                </div>
+                                <div class="col-lg-8 kygo">
+                                    <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.price %></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 festival-boder1">
+                                <div class="col-lg-4">
+                                    <p class="text-center"><i class="fas fa-dot-circle"></i>ジャンル</p>
+                                </div>
+                                <div class="col-lg-8 kygo">
+                                    <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.genre %></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 festival-boder1">
+                                <div class="col-lg-4">
+                                    <p class="text-center"><i class="fas fa-dot-circle"></i>開催日</p>
+                                </div>
+                                <div class="col-lg-8 kygo">
+                                    <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.day %></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 festival-boder1">
+                                <div class="col-lg-4">
+                                    <p class="text-center"><i class="fas fa-dot-circle"></i>開催地域</p>
+                                </div>
+                                <div class="col-lg-8 kygo">
+                                    <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.adress %></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 festival-boder1">
+                                <div class="col-lg-12">
+                                    <input id="address" type="textbox" value="Sydney, NSW">
+                                    <input type="button" value="Encode" onclick="codeAddress()">
+                                    <div id='map'></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 festival-boder1">
+                                <div class="col-lg-4">
+                                    <p class="text-center"><i class="fas fa-dot-circle"></i>コメント</p>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p class="text-center"><i class="fas fa-angle-right"></i><%= @festival.introduction %></p>
+                                </div>
+                            </div>
+                            <p class="text-right"><i class="fas fa-quote-right"></i></p>
+                        </div>
                     </div>
-                <% end %>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-12 click">
+                        <p class="text-center">出演アーティスト<i class="fas fa-check-circle"></i></p>
+                    </div>
+                    <% @fes_artists.each do |f| %>
+                        <div class="col-xs-3 fes-artist">
+                            <span data-turbolinks="false">
+                                <%= link_to "/artists/#{f.artist_id}" do %>
+                                    <% if f.artist.image.attached? %>
+                                        <div class="artist-festival">
+                                            <%= image_tag f.artist.image.variant(combine_options:{resize:"150x150^",crop:"150x150+0+0",gravity: :center}).processed %> <br>
+                                        </div>
+                                    <% end %>
+                                    <p class=text-center><%= f.artist.name %></p>
+                                    <%= render 'festivals/favorite_artists', artist: f %>
+                                <% end %>
+                            </span>
+                        </div>
+                    <% end %>
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,7 +131,26 @@
     height: 200px;
     }
 </style>
-
+<script>
+Pace.on('done', function(){
+    $('.wrap').fadeIn();
+        $('.slider-show').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        asNavFor: '.slider-show',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true
+      });
+});
+</script>
 <script>
     var map;
     let geocoder
