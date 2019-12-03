@@ -114,9 +114,9 @@
                                             <%= image_tag f.artist.image.variant(combine_options:{resize:"150x150^",crop:"150x150+0+0",gravity: :center}).processed %> <br>
                                         </div>
                                     <% end %>
-                                    <p class=text-center><%= f.artist.name %></p>
-                                    <%= render 'festivals/favorite_artists', artist: f %>
                                 <% end %>
+                                    <p class=text-center><%= f.artist.name %></p>
+                                    <div class="test"><%= render 'festivals/favorite_artists', artist: f %> </div>
                             </span>
                         </div>
                     <% end %>
@@ -131,9 +131,9 @@
     height: 200px;
     }
 </style>
-<script>
+<%# <script>
 Pace.on('done', function(){
-    $('.wrap').fadeIn();
+    $('.wrap').fadeIn();  
         $('.slider-show').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -150,7 +150,7 @@ Pace.on('done', function(){
         focusOnSelect: true
       });
 });
-</script>
+</script> %>
 <script>
     var map;
     let geocoder
@@ -174,4 +174,4 @@ function initMap(){
     });
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADd7HfuXWmrAbFLpvt7JVx5hhvmiu_vv0&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['google_map_API'] %>&callback=initMap"></script>

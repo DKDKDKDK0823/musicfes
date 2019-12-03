@@ -57,44 +57,44 @@ $(document).on('turbolinks:load', function(){
     
   });
 
-  // $(document).on('turbolinks:load', function(){
-  //   $('.slider3').slick({
-  //       slidesToShow: 1,
-  //       slidesToScroll: 1,
-  //       infinite: true,
-  //       arrows: true,
-  //       dots: true,
-  //       arrows: false,
-  //     });
-  // });
+  $(document).on('turbolinks:load', function(){
+    $('.slider3').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: true,
+        dots: true,
+        arrows: false,
+      });
+  });
 
-  // $(document).on('turbolinks:load', function(){
-  //   $('.slider1').slick({
-  //       slidesToShow: 1,
-  //       slidesToScroll: 1,
-  //       infinite: true,
-  //       dots: true,
-  //       arrows: false,
-  //     });
-  // });
+  $(document).on('turbolinks:load', function(){
+    $('.slider1').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+        arrows: false,
+      });
+  });
 
-//  $(document).on('turbolinks:load', function() {
-//     $('.slider-show').slick({
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//         arrows: false,
-//         fade: true,
-//         asNavFor: '.slider-nav'
-//       });
-//       $('.slider-nav').slick({
-//         slidesToShow: 2,
-//         slidesToScroll: 1,
-//         asNavFor: '.slider-show',
-//         dots: true,
-//         centerMode: true,
-//         focusOnSelect: true
-//       });
-// });
+ $(document).on('turbolinks:load', function() {
+    $('.slider-show').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        asNavFor: '.slider-show',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true
+      });
+});
 
 // $(document).on('turbolinks:load', function(){
 //     $("#Mottomiru").click(function(){

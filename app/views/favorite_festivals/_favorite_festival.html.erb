@@ -1,0 +1,16 @@
+
+<div class="favorite-link" id="favorite-link-<%= festival.id %>">
+  <% if user_signed_in? %>
+    <% if current_user.favorite_festivals.find_by(festival_id: festival.id) %>
+      <%= link_to unfavorite_path(festival.id), method: :delete, remote: true do %>
+          <p><span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: red;"></span>
+          <%= festival.favorite_festivals.size %>いいね </p>
+      <% end %>
+    <% else %>
+        <%= link_to favorite_path(festival.id), method: :post, remote: true do %>
+          <p><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+          <%= festival.favorite_festivals.size %>いいね</p>
+        <% end %>
+    <% end %>
+  <% end %>
+</div>

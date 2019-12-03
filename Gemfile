@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.5'
@@ -64,6 +64,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'bootstrap-sass' 
+gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
@@ -82,6 +83,7 @@ gem 'ransack'
 gem 'geocoder'
 gem 'http'
 gem 'json'
+gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
   gem 'listen', '>= 3.0.5', '< 3.2'
