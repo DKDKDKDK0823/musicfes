@@ -14,7 +14,7 @@ class Festival < ApplicationRecord
     private
 
     def geocode
-      uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.adress.gsub(" ", "")+"&key=AIzaSyADd7HfuXWmrAbFLpvt7JVx5hhvmiu_vv0")
+      uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.adress.gsub(" ", "")+"&key=ENV['google_map_API']")
       res = HTTP.get(uri).to_s
       response = JSON.parse(res)
       
