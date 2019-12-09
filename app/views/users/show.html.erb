@@ -65,7 +65,7 @@
 						<div class="col-lg-2 product-index">
 							<div class="col-lg-12">
 								<div class="col-lg-6 col-lg-offset-5">
-									<% if festival.user.id == current_user.id %>
+									<% if user_signed_in? %>
 										<%= link_to "/festivals/#{festival.id}/edit" do %>
 											<p class="text-right"><i class="fas fa-edit"></i></p>
 										<% end %>
