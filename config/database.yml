@@ -28,7 +28,7 @@ production:
   collation: utf8mb4_general_ci
   host: rds-mysql-server.c4glbaiee14q.ap-northeast-1.rds.amazonaws.com
   username: root
-  password: daiking0823
+  password: Daiking0823
 
 
 
