@@ -43,13 +43,10 @@ class UsersController < ApplicationController
 
 
   def baria_user
-      user = User.find(params[:id])
-    if user_signed_in?  
+    user = User.find(params[:id])
+    if user.id != current_user.id
       redirect_to user_path(current_user.id)
-    else
-      redirect_to ("/users/sign_in")
     end
-    
   end
 
 
