@@ -115,7 +115,7 @@ GEM
       rake
     font-awesome-sass (5.11.2)
       sassc (>= 1.11)
-    geocoder (1.5.2)
+    geocoder (1.6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http (4.2.0)
